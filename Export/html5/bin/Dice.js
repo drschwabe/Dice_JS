@@ -1216,7 +1216,8 @@ var Main = function() {
 	new js.JQuery("#start").hide();
 	new js.JQuery("#roll").hide();
 	var clickHandler = function(event) {
-		console.log("You clicked on the stage!");
+		console.log("You clicked on something!");
+		new js.JQuery("#start").hide();
 	};
 	var Display = function(screen) {
 		if(screen == "start") {

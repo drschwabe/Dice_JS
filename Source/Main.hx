@@ -20,9 +20,9 @@ class Main extends Sprite {
 		new js.JQuery("#roll").hide(); 	
 		
 		function clickHandler(event:MouseEvent) {
-			trace("You clicked on the stage!"); 
+			trace("You clicked on something!"); 
+			new js.JQuery("#start").hide(); 
 		}
-
 
 		function Display(screen) {
 
