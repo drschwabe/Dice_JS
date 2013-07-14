@@ -1,6 +1,7 @@
 import flash.display.Sprite;
 import js.jQuery.*; 
 import js.Browser.*;
+import flash.events.*;
 
 class Main extends Sprite {
 	
@@ -18,6 +19,11 @@ class Main extends Sprite {
 		new js.JQuery("#start").hide(); 
 		new js.JQuery("#roll").hide(); 	
 		
+		function clickHandler(event:MouseEvent) {
+			trace("You clicked on the stage!"); 
+		}
+
+
 		function Display(screen) {
 
 			if (screen == 'start') {
@@ -35,8 +41,11 @@ class Main extends Sprite {
 			} else if (screen == 'noRoll') {
 				trace("Why u no wanna play dice?\n\n"); 
 			}
+
+			stage.addEventListener(MouseEvent.CLICK, clickHandler); 
 		}
 
+	
 		Display('start'); 
 	}
 	
