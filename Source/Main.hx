@@ -13,24 +13,8 @@ class Main extends Sprite {
 		////Define variables: 
 		var SIDES = 6; 
 		var diceResult = null;
-			
-		//############# INPUT ################
-		////Events: 
-		function clickHandler(event:MouseEvent) {
-			trace("You clicked on something!"); 
-			new js.JQuery("#start").hide(); 
-		}
-
-		function keyDownHandler(event:KeyboardEvent) {
-			trace("You typed something!"); 
-			if(event.keyCode == Keyboard.R) {
-				trace("You are ready, that's great."); 
-			}
-		}
-
-		//Listeners: 
-		stage.addEventListener(MouseEvent.CLICK, clickHandler); 
-		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 
+		//var member:Sprite = Display(); 
+		//var Display = new Display(); 
 
 
 		//############# DISPLAY ################
@@ -47,8 +31,8 @@ class Main extends Sprite {
 				//window.alert("test");
 
 			} else if (screen == 'roll') {
-				trace("Okay, about to roll!\n\n"); 
-				//new JQuery("#roll").show(); 					
+				trace("Okay, about to roll!"); 
+				new js.JQuery("#roll").show(); 					
 
 			} else if (screen == diceResult) {
 				trace("You rolled a " + diceResult + "\n\n"); 
@@ -58,10 +42,33 @@ class Main extends Sprite {
 			}
 		}
 
+
+		//############# INPUT ################
+		////Events: 
+		function clickHandler(event:MouseEvent) {
+			trace("Clicked something."); 
+			new js.JQuery("#start").hide(); 
+		}
+
+		function keyDownHandler(event:KeyboardEvent) {
+			trace("Typed something."); 
+			if(event.keyCode == Keyboard.R) {
+				trace("--typed R."); 
+				Display('roll'); 
+			} else if (event.keyCode == Keyboard.E) {
+				trace("--typed E."); 
+			}
+		}
+
+		//Listeners: 
+		stage.addEventListener(MouseEvent.CLICK, clickHandler); 
+		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 
+
+
+
 		//############# AI ################
 
 		////Actions: 
-
 		function roll() {
 			//Generate a random number from 1 to 6:  
 			var computation = Math.ceil(Math.random() * SIDES - 1) + 1; 

@@ -1212,24 +1212,30 @@ var Main = function() {
 	flash.display.Sprite.call(this);
 	var SIDES = 6;
 	var diceResult = null;
-	var clickHandler = function(event) {
-		console.log("You clicked on something!");
-		new js.JQuery("#start").hide();
-	};
-	var keyDownHandler = function(event) {
-		console.log("You typed something!");
-		if(event.keyCode == 82) console.log("You are ready, that's great.");
-	};
-	this.get_stage().addEventListener(flash.events.MouseEvent.CLICK,clickHandler);
-	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
 	new js.JQuery("#start").hide();
 	new js.JQuery("#roll").hide();
 	var Display = function(screen) {
 		if(screen == "start") {
 			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
 			new js.JQuery("#start").show();
-		} else if(screen == "roll") console.log("Okay, about to roll!\n\n"); else if(screen == diceResult) console.log("You rolled a " + diceResult + "\n\n"); else if(screen == "noRoll") console.log("Why u no wanna play dice?\n\n");
+		} else if(screen == "roll") {
+			console.log("Okay, about to roll!");
+			new js.JQuery("#roll").show();
+		} else if(screen == diceResult) console.log("You rolled a " + diceResult + "\n\n"); else if(screen == "noRoll") console.log("Why u no wanna play dice?\n\n");
 	};
+	var clickHandler = function(event) {
+		console.log("Clicked something.");
+		new js.JQuery("#start").hide();
+	};
+	var keyDownHandler = function(event) {
+		console.log("Typed something.");
+		if(event.keyCode == 82) {
+			console.log("--typed R.");
+			Display("roll");
+		} else if(event.keyCode == 69) console.log("--typed E.");
+	};
+	this.get_stage().addEventListener(flash.events.MouseEvent.CLICK,clickHandler);
+	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
 	var roll = function() {
 		var computation = Math.ceil(Math.random() * SIDES - 1) + 1;
 		return Std.string(computation);
