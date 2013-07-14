@@ -10,9 +10,15 @@ body {
 	position: relative; 
 }
 
-#start, #roll{
+#start, #roll, #result{
 	position: absolute;
 	top: 50px;
 	left: 50px;
 	z-index: 1; 
+}
+
+#result { top: 90px; }
+
+#diceResult { 
+	font-weight: bold; 
 }

@@ -1212,38 +1212,47 @@ var Main = function() {
 	flash.display.Sprite.call(this);
 	var SIDES = 6;
 	var diceResult = null;
+	var currentScreen = null;
 	new js.JQuery("#start").hide();
 	new js.JQuery("#roll").hide();
+	new js.JQuery("#result").hide();
 	var Display = function(screen) {
+		currentScreen = screen;
 		if(screen == "start") {
 			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
 			new js.JQuery("#start").show();
 		} else if(screen == "roll") {
-			console.log("Okay, about to roll!");
+			console.log("You rolled it...");
+			new js.JQuery("#start").hide();
 			new js.JQuery("#roll").show();
-		} else if(screen == diceResult) console.log("You rolled a " + diceResult + "\n\n"); else if(screen == "noRoll") console.log("Why u no wanna play dice?\n\n");
+		} else if(screen == diceResult) {
+			console.log("You rolled a " + diceResult + "\n\n");
+			new js.JQuery("#result").show();
+			js.Browser.document.getElementById("result").innerHTML = diceResult;
+		} else if(screen == "noRoll") console.log("Why u no wanna play dice?\n\n");
 	};
-	var clickHandler = function(event) {
-		console.log("Clicked something.");
-		new js.JQuery("#start").hide();
-	};
-	var keyDownHandler = function(event) {
-		console.log("Typed something.");
-		if(event.keyCode == 82) {
-			console.log("--typed R.");
-			Display("roll");
-		} else if(event.keyCode == 69) console.log("--typed E.");
-	};
-	this.get_stage().addEventListener(flash.events.MouseEvent.CLICK,clickHandler);
-	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
 	var roll = function() {
 		var computation = Math.ceil(Math.random() * SIDES - 1) + 1;
 		return Std.string(computation);
 	};
-	var Ai = function() {
+	var Ai = function(newCommand,value) {
 		Display("start");
+		if(newCommand == true) {
+			if(currentScreen == "start") {
+				diceResult = roll();
+				Display("roll");
+				Display(diceResult);
+			}
+		}
 	};
-	Ai();
+	var keyDownHandler = function(event) {
+		if(event.keyCode == 82) {
+			console.log("--typed R.");
+			Ai(true,event.keyCode);
+		} else if(event.keyCode == 69) console.log("--typed E.");
+	};
+	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
+	Ai(null,null);
 };
 $hxClasses["Main"] = Main;
 Main.__name__ = ["Main"];

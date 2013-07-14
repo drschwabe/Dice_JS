@@ -3,6 +3,7 @@ import js.jQuery.*;
 import js.Browser.*;
 import flash.events.*;
 import flash.ui.Keyboard;
+import haxe.Timer; 
 
 class Main extends Sprite {
 	
@@ -13,58 +14,41 @@ class Main extends Sprite {
 		////Define variables: 
 		var SIDES = 6; 
 		var diceResult = null;
-		//var member:Sprite = Display(); 
-		//var Display = new Display(); 
+		var currentScreen = null; 
 
 
 		//############# DISPLAY ################
 		////Initial settings:  
 		new js.JQuery("#start").hide(); 
-		new js.JQuery("#roll").hide(); 	
+		new js.JQuery("#roll").hide(); 
+		new js.JQuery("#result").hide(); 	
 
 		////Primary function: 
 		function Display(screen) {
 
+			//Log the current screen Ai can keep track of where we are: 
+			currentScreen = screen; 
+
 			if (screen == 'start') {
+				//Welcome user: 
 				trace("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
 				new js.JQuery("#start").show(); 
-				//window.alert("test");
 
 			} else if (screen == 'roll') {
-				trace("Okay, about to roll!"); 
+				//Tell user what is going on:
+				trace("You rolled it..."); 
+				new js.JQuery("#start").hide(); 		
 				new js.JQuery("#roll").show(); 					
 
 			} else if (screen == diceResult) {
 				trace("You rolled a " + diceResult + "\n\n"); 
+				new js.JQuery("#result").show(); 	
+				js.Browser.document.getElementById('result').innerHTML = diceResult;
 			
 			} else if (screen == 'noRoll') {
 				trace("Why u no wanna play dice?\n\n"); 
 			}
 		}
-
-
-		//############# INPUT ################
-		////Events: 
-		function clickHandler(event:MouseEvent) {
-			trace("Clicked something."); 
-			new js.JQuery("#start").hide(); 
-		}
-
-		function keyDownHandler(event:KeyboardEvent) {
-			trace("Typed something."); 
-			if(event.keyCode == Keyboard.R) {
-				trace("--typed R."); 
-				Display('roll'); 
-			} else if (event.keyCode == Keyboard.E) {
-				trace("--typed E."); 
-			}
-		}
-
-		//Listeners: 
-		stage.addEventListener(MouseEvent.CLICK, clickHandler); 
-		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 
-
-
 
 		//############# AI ################
 
@@ -78,12 +62,48 @@ class Main extends Sprite {
 		}
 
 		///Primary function: 
-		function Ai() {
-			//Ai starts up: 
+		function Ai(newCommand, value) {
+
+			//Initialize the app:
 			Display('start'); 
+
+			//Process input:
+			if(newCommand == true) {
+
+				//Determine action based on what screen we on:
+				if(currentScreen == 'start') {
+					//Start screen asks if user wants to roll, that is the only option, so that is the new command.  Commence the dice rolling! 
+					diceResult = roll(); 
+
+					//Update the screen: 
+					Display('roll'); 
+
+					// var timer:haxe.Timer = haxe.Timer.delay(Display(diceResult), 300); 
+					Display(diceResult); 
+				}
+			}
 		}
 
-		Ai(); 
+
+		//############# INPUT ################
+
+		function keyDownHandler(event:KeyboardEvent) {
+
+			if(event.keyCode == Keyboard.R) {
+				trace("--typed R."); 
+				//Send this news to Ai for processing: 
+				Ai(true, event.keyCode); 
+
+			} else if (event.keyCode == Keyboard.E) {
+				trace("--typed E."); 
+			}
+		}
+
+		//Listeners: 
+		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 		
+
+		//Start game: 
+		Ai(null, null); 
 	}
 	
 }
