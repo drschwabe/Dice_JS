@@ -1,5 +1,5 @@
 import flash.display.Sprite;
-import jQuery.*; 
+import js.jQuery.*; 
 import js.Browser.*;
 
 class Main extends Sprite {
@@ -13,13 +13,17 @@ class Main extends Sprite {
 		var diceResult = null; 
 
 		//new JQuery(function() { //(Document ready)
+
+		//Initial display settings:  
+		new js.JQuery("#start").hide(); 
+		new js.JQuery("#roll").hide(); 	
 		
 		function Display(screen) {
 
 			if (screen == 'start') {
 				trace("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
-				//new JQuery("#start").show(); 
-				window.alert("test"); 
+				new js.JQuery("#start").show(); 
+				//window.alert("test");
 
 			} else if (screen == 'roll') {
 				trace("Okay, about to roll!\n\n"); 

@@ -1212,10 +1212,12 @@ var Main = function() {
 	flash.display.Sprite.call(this);
 	var SIDES = 6;
 	var diceResult = null;
+	new js.JQuery("#start").hide();
+	new js.JQuery("#roll").hide();
 	var Display = function(screen) {
 		if(screen == "start") {
 			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
-			js.Browser.window.alert("test");
+			new js.JQuery("#start").show();
 		} else if(screen == "roll") console.log("Okay, about to roll!\n\n"); else if(screen == diceResult) console.log("You rolled a " + diceResult + "\n\n"); else if(screen == "noRoll") console.log("Why u no wanna play dice?\n\n");
 	};
 	Display("start");
@@ -7262,6 +7264,8 @@ Bool.__ename__ = ["Bool"];
 var Class = $hxClasses.Class = { __name__ : ["Class"]};
 var Enum = { };
 haxe.Resource.content = [];
+var q = window.jQuery;
+js.JQuery = q;
 flash.display.DisplayObject.GRAPHICS_INVALID = 2;
 flash.display.DisplayObject.MATRIX_INVALID = 4;
 flash.display.DisplayObject.MATRIX_CHAIN_INVALID = 8;
