@@ -1,0 +1,16 @@
+-main ApplicationMain 
+-lib openfl
+-lib openfl-html5
+-cp Source
+-cp C:\HaxeToolkit\haxe\lib\openfl/1,0,4/
+-cp C:\HaxeToolkit\haxe\lib\openfl-html5/1,0,3/
+-D tools=1
+-D openfl_ver=1.0.4
+-D openfl
+-D html5
+-D web
+-js Export/html5/bin/Dice.js
+-cp Export/html5/haxe
+-D html5
+-D html
+--remap flash:flash
