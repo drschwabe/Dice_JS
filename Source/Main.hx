@@ -8,22 +8,24 @@ class Main extends Sprite {
 	public function new () {
 		
 		super ();
-		
-		//Define the variables: 
+
+		////Define variables: 
 		var SIDES = 6; 
-		var diceResult = null; 
-
-		//new JQuery(function() { //(Document ready)
-
-		//Initial display settings:  
-		new js.JQuery("#start").hide(); 
-		new js.JQuery("#roll").hide(); 	
-		
+		var diceResult = null;
+			
+		//############# INPUT ################
+		//// Click events: 
 		function clickHandler(event:MouseEvent) {
 			trace("You clicked on something!"); 
 			new js.JQuery("#start").hide(); 
 		}
 
+		//############# DISPLAY ################
+		////Initial settings:  
+		new js.JQuery("#start").hide(); 
+		new js.JQuery("#roll").hide(); 	
+
+		////Primary function: 
 		function Display(screen) {
 
 			if (screen == 'start') {
@@ -45,8 +47,25 @@ class Main extends Sprite {
 			stage.addEventListener(MouseEvent.CLICK, clickHandler); 
 		}
 
-	
-		Display('start'); 
+		//############# AI ################
+
+		////Actions: 
+
+		function roll() {
+			//Generate a random number from 1 to 6:  
+			var computation = Math.ceil(Math.random() * SIDES - 1) + 1; 
+
+			//Convert to string and return: 
+			return Std.string(computation); 
+		}
+
+		///Primary function: 
+		function Ai() {
+			//Ai starts up: 
+			Display('start'); 
+		}
+
+		Ai(); 
 	}
 	
 }

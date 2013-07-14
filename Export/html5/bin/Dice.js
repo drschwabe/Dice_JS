@@ -1213,12 +1213,12 @@ var Main = function() {
 	flash.display.Sprite.call(this);
 	var SIDES = 6;
 	var diceResult = null;
-	new js.JQuery("#start").hide();
-	new js.JQuery("#roll").hide();
 	var clickHandler = function(event) {
 		console.log("You clicked on something!");
 		new js.JQuery("#start").hide();
 	};
+	new js.JQuery("#start").hide();
+	new js.JQuery("#roll").hide();
 	var Display = function(screen) {
 		if(screen == "start") {
 			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
@@ -1226,7 +1226,14 @@ var Main = function() {
 		} else if(screen == "roll") console.log("Okay, about to roll!\n\n"); else if(screen == diceResult) console.log("You rolled a " + diceResult + "\n\n"); else if(screen == "noRoll") console.log("Why u no wanna play dice?\n\n");
 		_g.get_stage().addEventListener(flash.events.MouseEvent.CLICK,clickHandler);
 	};
-	Display("start");
+	var roll = function() {
+		var computation = Math.ceil(Math.random() * SIDES - 1) + 1;
+		return Std.string(computation);
+	};
+	var Ai = function() {
+		Display("start");
+	};
+	Ai();
 };
 $hxClasses["Main"] = Main;
 Main.__name__ = ["Main"];

@@ -11,27 +11,30 @@
 	
 	<!-- <div id="haxe:trace" style="position: absolute; z-index: 2147483647; display: none;"></div> -->
 	
-	<div id="start">
+	<div class="container">
 
-		<p>Welcome to Dice.  Are you ready to roll?</p>
-		<span>(R)oll</span> <span>(E)xit</span>
 
+		<div id="start">
+
+			<p>Welcome to Dice.  Are you ready to roll?</p>
+			<span>(R)oll</span> <span>(E)xit</span>
+
+		</div>
+
+		<div id="roll">
+
+			<p>You rolled something!</p>
+
+		</div>
+
+		
+		<div id="haxe:jeash" style="background-color: #222329; width: 800px; height: 600px;" data-framerate="0"></div>
+		
+		
+		<script>function winParameters () { return {}; }</script>
+		<script id="haxe:jeash:script" type="text/javascript" src="./Dice.js"></script>
+		
 	</div>
-
-	<div id="roll">
-
-		<p>You rolled something!</p>
-
-	</div>
-
-	
-	<div id="haxe:jeash" style="background-color: #222329; width: 800px; height: 600px;" data-framerate="0"></div>
-	
-	
-	<script>function winParameters () { return {}; }</script>
-	<script id="haxe:jeash:script" type="text/javascript" src="./Dice.js"></script>
-	
-	
 	
 </body>
 </html>

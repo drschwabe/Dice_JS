@@ -1,11 +1,18 @@
 body { 
 	background-color: #000; 
 	color: #FFF; 
+	margin:0px; 
+}
+
+.container {
+	width: 800px;
+	margin: 0 auto 0 auto; 
+	position: relative; 
 }
 
 #start {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 50px;
+	left: 50px;
 	z-index: 1; 
 }
