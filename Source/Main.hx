@@ -2,6 +2,7 @@ import flash.display.Sprite;
 import js.jQuery.*; 
 import js.Browser.*;
 import flash.events.*;
+import flash.ui.Keyboard;
 
 class Main extends Sprite {
 	
@@ -14,11 +15,23 @@ class Main extends Sprite {
 		var diceResult = null;
 			
 		//############# INPUT ################
-		//// Click events: 
+		////Events: 
 		function clickHandler(event:MouseEvent) {
 			trace("You clicked on something!"); 
 			new js.JQuery("#start").hide(); 
 		}
+
+		function keyDownHandler(event:KeyboardEvent) {
+			trace("You typed something!"); 
+			if(event.keyCode == Keyboard.R) {
+				trace("You are ready, that's great."); 
+			}
+		}
+
+		//Listeners: 
+		stage.addEventListener(MouseEvent.CLICK, clickHandler); 
+		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 
+
 
 		//############# DISPLAY ################
 		////Initial settings:  
@@ -43,8 +56,6 @@ class Main extends Sprite {
 			} else if (screen == 'noRoll') {
 				trace("Why u no wanna play dice?\n\n"); 
 			}
-
-			stage.addEventListener(MouseEvent.CLICK, clickHandler); 
 		}
 
 		//############# AI ################
