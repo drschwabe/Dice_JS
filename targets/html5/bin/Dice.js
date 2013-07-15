@@ -67,10 +67,10 @@ ApplicationMain.preloader_onComplete = function(event) {
 	ApplicationMain.preloader.removeEventListener(flash.events.Event.COMPLETE,ApplicationMain.preloader_onComplete);
 	flash.Lib.get_current().removeChild(ApplicationMain.preloader);
 	ApplicationMain.preloader = null;
-	if(Reflect.field(Main,"main") == null) {
+	if(Reflect.field(Dice,"main") == null) {
 		var mainDisplayObj = Type.createInstance(DocumentClass,[]);
 		if(js.Boot.__instanceof(mainDisplayObj,flash.display.DisplayObject)) flash.Lib.get_current().addChild(mainDisplayObj);
-	} else Reflect.field(Main,"main").apply(Main,[]);
+	} else Reflect.field(Dice,"main").apply(Dice,[]);
 }
 var flash = {}
 flash.events = {}
@@ -1208,7 +1208,7 @@ flash.display.Sprite.prototype = $extend(flash.display.DisplayObjectContainer.pr
 	,__class__: flash.display.Sprite
 	,__properties__: $extend(flash.display.DisplayObjectContainer.prototype.__properties__,{get_dropTarget:"get_dropTarget",get_graphics:"get_graphics",set_useHandCursor:"set_useHandCursor"})
 });
-var Main = function() {
+var Dice = function() {
 	flash.display.Sprite.call(this);
 	var SIDES = 6;
 	var diceResult = null;
@@ -1259,19 +1259,19 @@ var Main = function() {
 	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
 	Ai("init");
 };
-$hxClasses["Main"] = Main;
-Main.__name__ = ["Main"];
-Main.__super__ = flash.display.Sprite;
-Main.prototype = $extend(flash.display.Sprite.prototype,{
-	__class__: Main
+$hxClasses["Dice"] = Dice;
+Dice.__name__ = ["Dice"];
+Dice.__super__ = flash.display.Sprite;
+Dice.prototype = $extend(flash.display.Sprite.prototype,{
+	__class__: Dice
 });
 var DocumentClass = function() {
-	Main.call(this);
+	Dice.call(this);
 };
 $hxClasses["DocumentClass"] = DocumentClass;
 DocumentClass.__name__ = ["DocumentClass"];
-DocumentClass.__super__ = Main;
-DocumentClass.prototype = $extend(Main.prototype,{
+DocumentClass.__super__ = Dice;
+DocumentClass.prototype = $extend(Dice.prototype,{
 	get_stage: function() {
 		return flash.Lib.get_current().get_stage();
 	}

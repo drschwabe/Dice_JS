@@ -1,17 +1,17 @@
 import flash.display.Sprite;
 import js.jQuery.*; 
 import js.Browser.*;
-import flash.events.*;
+import flash.events.KeyboardEvent;
 import flash.ui.Keyboard;
 import haxe.Timer; 
 
-class Main extends Sprite {
+class Dice extends Sprite {
 	
 	public function new () {
 		
 		super ();
 
-		////Define variables: 
+		//Define global variables: 
 		var SIDES = 6; 
 		var diceResult = null;
 		var currentScreen = null; 
@@ -39,7 +39,7 @@ class Main extends Sprite {
 				trace("You rolled it..."); 
 				new js.JQuery("#start").hide(); 		
 				new js.JQuery("#roll").show(); 
-				//Hide any current result, if any: 
+				//Hide current result, if any: 
 				new js.JQuery("#result").hide(); 	
 
 			} else if (screen == diceResult) {
@@ -54,12 +54,9 @@ class Main extends Sprite {
 		//############# AI ################
 
 		////Actions: 
-
 		function finishRoll() {
 			Display(diceResult); 
 		}
-
-
 		function roll() {
 			//Generate a random number from 1 to 6:  
 			var computation = Math.ceil(Math.random() * SIDES - 1) + 1; 
@@ -75,14 +72,11 @@ class Main extends Sprite {
 		function Ai(command) {
 
 			//Process command:
-
 			if(command == 'init') {
 				//Welcome the user:
 				Display('start'); 
 				return; //(defer to #Input listener)
 			}
-
-			//Determine action based on what screen we on:
 			if(command == 'R') {
 
 				//Commence the dice rolling! 
@@ -108,8 +102,8 @@ class Main extends Sprite {
 				//Ai(true, event.keyCode); 
 			}
 		}
-
-		//Listeners: 
+		
+		////Listeners: 
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 		
 
 		//Start game: 

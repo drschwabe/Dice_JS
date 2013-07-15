@@ -19,6 +19,8 @@ body {
 
 #result { top: 90px; }
 
+p.tip { color: #666; }
+
 #diceResult { 
 	font-weight: bold; 
 }
