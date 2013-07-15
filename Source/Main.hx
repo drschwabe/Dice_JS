@@ -27,7 +27,7 @@ class Main extends Sprite {
 		function Display(screen) {
 
 			//Log the current screen Ai can keep track of where we are: 
-			currentScreen = screen; 
+			currentScreen = screen; 	
 
 			if (screen == 'start') {
 				//Welcome user: 
@@ -38,49 +38,58 @@ class Main extends Sprite {
 				//Tell user what is going on:
 				trace("You rolled it..."); 
 				new js.JQuery("#start").hide(); 		
-				new js.JQuery("#roll").show(); 					
+				new js.JQuery("#roll").show(); 
+				//Hide any current result, if any: 
+				new js.JQuery("#result").hide(); 	
 
 			} else if (screen == diceResult) {
 				trace("You rolled a " + diceResult + "\n\n"); 
 				new js.JQuery("#result").show(); 	
-				js.Browser.document.getElementById('result').innerHTML = diceResult;
-			
-			} else if (screen == 'noRoll') {
-				trace("Why u no wanna play dice?\n\n"); 
+				js.Browser.document.getElementById('diceResult').innerHTML = diceResult;
+		
 			}
+			//Display is finished so defer to #Input listeners or continue with remainder of Ai execution. 
 		}
 
 		//############# AI ################
 
 		////Actions: 
+
+		function finishRoll() {
+			Display(diceResult); 
+		}
+
+
 		function roll() {
 			//Generate a random number from 1 to 6:  
 			var computation = Math.ceil(Math.random() * SIDES - 1) + 1; 
 
-			//Convert to string and return: 
-			return Std.string(computation); 
+			//Convert to string:
+			diceResult = Std.string(computation); 
+
+			//Wait a second before revealing the roll result: 
+			haxe.Timer.delay(finishRoll, 1000); 
 		}
 
 		///Primary function: 
-		function Ai(newCommand, value) {
+		function Ai(command) {
 
-			//Initialize the app:
-			Display('start'); 
+			//Process command:
 
-			//Process input:
-			if(newCommand == true) {
+			if(command == 'init') {
+				//Welcome the user:
+				Display('start'); 
+				return; //(defer to #Input listener)
+			}
 
-				//Determine action based on what screen we on:
-				if(currentScreen == 'start') {
-					//Start screen asks if user wants to roll, that is the only option, so that is the new command.  Commence the dice rolling! 
-					diceResult = roll(); 
+			//Determine action based on what screen we on:
+			if(command == 'R') {
 
-					//Update the screen: 
-					Display('roll'); 
+				//Commence the dice rolling! 
+				roll(); 
 
-					// var timer:haxe.Timer = haxe.Timer.delay(Display(diceResult), 300); 
-					Display(diceResult); 
-				}
+				//Update the screen: 
+				Display('roll'); 
 			}
 		}
 
@@ -92,10 +101,11 @@ class Main extends Sprite {
 			if(event.keyCode == Keyboard.R) {
 				trace("--typed R."); 
 				//Send this news to Ai for processing: 
-				Ai(true, event.keyCode); 
+				Ai('R'); 
 
 			} else if (event.keyCode == Keyboard.E) {
 				trace("--typed E."); 
+				//Ai(true, event.keyCode); 
 			}
 		}
 
@@ -103,7 +113,7 @@ class Main extends Sprite {
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 		
 
 		//Start game: 
-		Ai(null, null); 
+		Ai('init'); 
 	}
 	
 }

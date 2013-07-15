@@ -1225,34 +1225,39 @@ var Main = function() {
 			console.log("You rolled it...");
 			new js.JQuery("#start").hide();
 			new js.JQuery("#roll").show();
+			new js.JQuery("#result").hide();
 		} else if(screen == diceResult) {
 			console.log("You rolled a " + diceResult + "\n\n");
 			new js.JQuery("#result").show();
-			js.Browser.document.getElementById("result").innerHTML = diceResult;
-		} else if(screen == "noRoll") console.log("Why u no wanna play dice?\n\n");
+			js.Browser.document.getElementById("diceResult").innerHTML = diceResult;
+		}
+	};
+	var finishRoll = function() {
+		Display(diceResult);
 	};
 	var roll = function() {
 		var computation = Math.ceil(Math.random() * SIDES - 1) + 1;
-		return Std.string(computation);
+		diceResult = Std.string(computation);
+		haxe.Timer.delay(finishRoll,1000);
 	};
-	var Ai = function(newCommand,value) {
-		Display("start");
-		if(newCommand == true) {
-			if(currentScreen == "start") {
-				diceResult = roll();
-				Display("roll");
-				Display(diceResult);
-			}
+	var Ai = function(command) {
+		if(command == "init") {
+			Display("start");
+			return;
+		}
+		if(command == "R") {
+			roll();
+			Display("roll");
 		}
 	};
 	var keyDownHandler = function(event) {
 		if(event.keyCode == 82) {
 			console.log("--typed R.");
-			Ai(true,event.keyCode);
+			Ai("R");
 		} else if(event.keyCode == 69) console.log("--typed E.");
 	};
 	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
-	Ai(null,null);
+	Ai("init");
 };
 $hxClasses["Main"] = Main;
 Main.__name__ = ["Main"];
@@ -1580,11 +1585,35 @@ Type.createInstance = function(cl,args) {
 	return null;
 }
 var haxe = {}
-haxe.Timer = function() { }
+haxe.Timer = function(time_ms) {
+	var me = this;
+	this.id = setInterval(function() {
+		me.run();
+	},time_ms);
+};
 $hxClasses["haxe.Timer"] = haxe.Timer;
 haxe.Timer.__name__ = ["haxe","Timer"];
+haxe.Timer.delay = function(f,time_ms) {
+	var t = new haxe.Timer(time_ms);
+	t.run = function() {
+		t.stop();
+		f();
+	};
+	return t;
+}
 haxe.Timer.stamp = function() {
 	return new Date().getTime() / 1000;
+}
+haxe.Timer.prototype = {
+	run: function() {
+		console.log("run");
+	}
+	,stop: function() {
+		if(this.id == null) return;
+		clearInterval(this.id);
+		this.id = null;
+	}
+	,__class__: haxe.Timer
 }
 flash.Lib = function(rootElement,width,height) {
 	this.mKilled = false;
