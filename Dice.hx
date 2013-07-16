@@ -23,6 +23,7 @@ class Dice extends Sprite {
 		////Define UI elemnts: 
 		var rollBtn = js.Browser.document.getElementById('rollBtn'); 
 		var rollAgainBtn = js.Browser.document.getElementById('rollAgainBtn');
+		var homeBtn = js.Browser.document.getElementById('homeBtn');
 
 		////
 		function showDie(face) {
@@ -64,7 +65,10 @@ class Dice extends Sprite {
 			if (screen == 'start') {
 				//Welcome user: 
 				trace("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
-				new js.JQuery("#start").show(); 
+				new js.JQuery("#start").show();
+				new js.JQuery("#roll").hide(); 
+				new js.JQuery("#dice").hide(); 
+
 
 			} else if (screen == 'roll') {
 				new js.JQuery("#start").hide();
@@ -134,7 +138,12 @@ class Dice extends Sprite {
 
 		function clickHandLer(event:MouseEvent) {
 			trace('mouse clicked.'); 
-			Ai('R'); 
+			if(event.target == homeBtn) {
+				Display('start'); 
+			//All other menu buttons do a dice roll: 
+			} else {
+				Ai('R'); 				
+			}
 		}
 
 		function keyDownHandler(event:KeyboardEvent) {
@@ -153,7 +162,9 @@ class Dice extends Sprite {
 		////Listeners: 
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 
 		rollBtn.addEventListener(MouseEvent.CLICK, clickHandLer); 			
-		rollAgainBtn.addEventListener(MouseEvent.CLICK, clickHandLer); 			
+		rollAgainBtn.addEventListener(MouseEvent.CLICK, clickHandLer); 		
+		homeBtn.addEventListener(MouseEvent.CLICK, clickHandLer); 			
+
 
 		//Start game: 
 		Ai('init'); 

@@ -1215,6 +1215,7 @@ var Dice = function() {
 	var currentScreen = null;
 	var rollBtn = js.Browser.document.getElementById("rollBtn");
 	var rollAgainBtn = js.Browser.document.getElementById("rollAgainBtn");
+	var homeBtn = js.Browser.document.getElementById("homeBtn");
 	var showDie = function(face) {
 		switch(face) {
 		case "1":
@@ -1246,6 +1247,9 @@ var Dice = function() {
 		if(screen == "start") {
 			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
 			new js.JQuery("#start").show();
+			new js.JQuery("#roll").hide();
+			new js.JQuery("#dice").hide();
+			new js.JQuery("#dice").children().hide();
 		} else if(screen == "roll") {
 			new js.JQuery("#start").hide();
 			new js.JQuery("#dice").hide();
@@ -1282,7 +1286,7 @@ var Dice = function() {
 	};
 	var clickHandLer = function(event) {
 		console.log("mouse clicked.");
-		Ai("R");
+		if(event.target == homeBtn) Display("start"); else Ai("R");
 	};
 	var keyDownHandler = function(event) {
 		if(event.keyCode == 82) {
@@ -1293,6 +1297,7 @@ var Dice = function() {
 	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
 	rollBtn.addEventListener(flash.events.MouseEvent.CLICK,clickHandLer);
 	rollAgainBtn.addEventListener(flash.events.MouseEvent.CLICK,clickHandLer);
+	homeBtn.addEventListener(flash.events.MouseEvent.CLICK,clickHandLer);
 	Ai("init");
 };
 $hxClasses["Dice"] = Dice;
