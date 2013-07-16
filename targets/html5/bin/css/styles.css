@@ -1,20 +1,55 @@
 body { 
 	background-color: #000; 
 	color: #FFF; 
-	margin:0px; 
+	margin:25px 0 0; 
 }
 
 .container {
-	width: 800px;
+	width: 580px;
 	margin: 0 auto 0 auto; 
 	position: relative; 
 }
 
-#start, #roll, #result{
+#start, #roll, #result {
 	position: absolute;
-	top: 50px;
-	left: 50px;
+	top: 0px;
+	left: 0px;
 	z-index: 1; 
+	width:580px; 
+}
+
+#start img { 
+	display:block; 
+	margin: 0 auto;
+}
+
+
+
+
+#start div.options {
+	width:150px; 
+	margin: 0 auto;
+}
+
+#start div.options div {
+	background-color: #000; 
+	border: 5px solid #000; 
+	border-radius: 10px;
+	margin-bottom: 15px; 
+	font-family: Courier; 
+	text-align: center; 
+	font-size: 21px;
+	padding: 5px 0;	
+	cursor: default; 
+}
+
+#start div.options div:hover {
+	border-color: #FFF; 
+}
+
+
+#start div.options div.roll {
+	font-size: 52px; 
 }
 
 #result { top: 90px; }
