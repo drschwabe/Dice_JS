@@ -94,7 +94,7 @@ div#rollAgainBtn.rolling:hover {
 
 #dice { top: 90px; }
 
-div.die { 
+div.face { 
 	width: 225px; 
 	height: 225px; 
 	background-color: #FFF; 
@@ -103,7 +103,7 @@ div.die {
 	position:relative;
 }
 
-div.die div.dot {
+div.face div.dot {
 	/*display:inline-block;*/
 	border-radius: 100%;
 	background-color:#000;
@@ -114,37 +114,37 @@ div.die div.dot {
 }
 
 
-div.die div.topLeft {
+div.face div.topLeft {
 	top: 0; 
 	left: 0;   
 }
 
-div.die div.topCenter {
+div.face div.topCenter {
 	top: 0; 
 	left: 67px;  
 }
 
-div.die div.topRight {
+div.face div.topRight {
 	top: 0; 
 	right: 0;  
 }
 
-div.die div.center {
+div.face div.center {
 	top: 67px; 
 	left: 67px;  
 }
-div.die div.botLeft {
+div.face div.botLeft {
 	bottom: 0px; 
 	left: 0;  
 }
 
-div.die div.botCenter {
+div.face div.botCenter {
 	bottom: 0px; 
 	left: 67px;  
 }
 
 
-div.die div.botRight {
+div.face div.botRight {
 	bottom: 0px; 
 	right: 0;  
 }

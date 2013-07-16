@@ -1219,29 +1219,28 @@ var Dice = function() {
 	var showDie = function(face) {
 		switch(face) {
 		case "1":
-			new js.JQuery("#die1").show();
+			new js.JQuery("#top").show();
 			break;
 		case "2":
-			new js.JQuery("#die2").show();
+			new js.JQuery("#front").show();
 			break;
 		case "3":
-			new js.JQuery("#die3").show();
+			new js.JQuery("#right").show();
 			break;
 		case "4":
-			new js.JQuery("#die4").show();
+			new js.JQuery("#left").show();
 			break;
 		case "5":
-			new js.JQuery("#die5").show();
+			new js.JQuery("#back").show();
 			break;
 		case "6":
-			new js.JQuery("#die6").show();
+			new js.JQuery("#bottom").show();
 			break;
 		}
 	};
 	new js.JQuery("#start").hide();
 	new js.JQuery("#roll").hide();
 	new js.JQuery("#dice").hide();
-	new js.JQuery("#dice").children().hide();
 	var Display = function(screen) {
 		currentScreen = screen;
 		if(screen == "start") {
@@ -1249,11 +1248,10 @@ var Dice = function() {
 			new js.JQuery("#start").show();
 			new js.JQuery("#roll").hide();
 			new js.JQuery("#dice").hide();
-			new js.JQuery("#dice").children().hide();
 		} else if(screen == "roll") {
 			new js.JQuery("#start").hide();
 			new js.JQuery("#dice").hide();
-			new js.JQuery("#dice").children().hide();
+			new js.JQuery(".face").hide();
 			console.log("You rolled a...");
 			rollAgainBtn.innerHTML = "ROLLING";
 			new js.JQuery("#rollAgainBtn").addClass("rolling");

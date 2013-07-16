@@ -31,22 +31,22 @@ class Dice extends Sprite {
 			switch(face) {
 
 				case '1': 
-					new js.JQuery("#die1").show();
+					new js.JQuery("#top").show();
 
 				case '2': 
-					new js.JQuery("#die2").show();
+					new js.JQuery("#front").show();					
 				
 				case '3': 
-					new js.JQuery("#die3").show();
+					new js.JQuery("#right").show();					
 				
 				case '4': 
-					new js.JQuery("#die4").show();
+					new js.JQuery("#left").show();				
 				
 				case '5': 
-					new js.JQuery("#die5").show();
+					new js.JQuery("#back").show();					
 
 				case '6': 
-					new js.JQuery("#die6").show();
+					new js.JQuery("#bottom").show();			
 				}
 		}
 
@@ -54,7 +54,7 @@ class Dice extends Sprite {
 		new js.JQuery("#start").hide(); 
 		new js.JQuery("#roll").hide(); 
 		new js.JQuery("#dice").hide();
-		new js.JQuery("#dice").children().hide();				
+		//new js.JQuery(".face").children().hide();
 
 		////Primary function: 
 		function Display(screen) {
@@ -74,20 +74,24 @@ class Dice extends Sprite {
 				new js.JQuery("#start").hide();
 				//Hide previous result if existing:
 				new js.JQuery("#dice").hide();
-				new js.JQuery("#dice").children().hide();
+				//new js.JQuery("#dice").children().hide();
+				new js.JQuery(".face").hide(); //hide Die faces too
 
 				//Tell user what is going on:
 				trace("You rolled a..."); 
 				rollAgainBtn.innerHTML = 'ROLLING'; 
 				new js.JQuery("#rollAgainBtn").addClass("rolling"); 
 
-				//Reveal the die: 
+				//Reveal the rolling:  
 				new js.JQuery("#roll").show(); 
 			
 			} else if (screen == diceResult) {
 				trace(diceResult); 
+
+				//Reveal the result: 
 				new js.JQuery("#dice").show();			
 				showDie(screen);
+
 				//Return rolling UI button back to normal: 				
 				rollAgainBtn.innerHTML = 'ROLL again'; 
 				//Reset rolling button: 	
