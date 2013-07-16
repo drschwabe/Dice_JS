@@ -10,7 +10,7 @@ body {
 	position: relative; 
 }
 
-#start, #roll, #result {
+#start, #roll, #dice {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -51,13 +51,9 @@ body {
 	font-size: 52px; 
 }
 
-#result { top: 90px; }
+#dice { top: 90px; }
 
 p.tip { color: #666; }
-
-#diceResult { 
-	font-weight: bold; 
-}
 
 div.die { 
 	width: 225px; 
@@ -72,8 +68,8 @@ div.die div.dot {
 	/*display:inline-block;*/
 	border-radius: 100%;
 	background-color:#000;
-	width: 50px; 
-	height: 50px; 
+	width: 53px; 
+	height: 53px; 
 	position:absolute; 
 	margin:20px;
 }
@@ -86,7 +82,7 @@ div.die div.topLeft {
 
 div.die div.topCenter {
 	top: 0; 
-	left: 69px;  
+	left: 67px;  
 }
 
 div.die div.topRight {
@@ -95,8 +91,8 @@ div.die div.topRight {
 }
 
 div.die div.center {
-	top: 69px; 
-	left: 69px;  
+	top: 67px; 
+	left: 67px;  
 }
 div.die div.botLeft {
 	bottom: 0px; 
@@ -105,7 +101,7 @@ div.die div.botLeft {
 
 div.die div.botCenter {
 	bottom: 0px; 
-	left: 69px;  
+	left: 67px;  
 }
 
 

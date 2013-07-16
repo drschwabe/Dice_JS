@@ -1213,16 +1213,33 @@ var Dice = function() {
 	var SIDES = 6;
 	var diceResult = null;
 	var currentScreen = null;
+	var rollBtn = js.Browser.document.getElementById("rollBtn");
+	var showDie = function(face) {
+		switch(face) {
+		case "1":
+			new js.JQuery("#die1").show();
+			break;
+		case "2":
+			new js.JQuery("#die2").show();
+			break;
+		case "3":
+			new js.JQuery("#die3").show();
+			break;
+		case "4":
+			new js.JQuery("#die4").show();
+			break;
+		case "5":
+			new js.JQuery("#die5").show();
+			break;
+		case "6":
+			new js.JQuery("#die6").show();
+			break;
+		}
+	};
 	new js.JQuery("#start").hide();
 	new js.JQuery("#roll").hide();
-	new js.JQuery("#result").hide();
-	new js.JQuery("#die1").hide();
-	new js.JQuery("#die2").hide();
-	new js.JQuery("#die3").hide();
-	new js.JQuery("#die4").hide();
-	new js.JQuery("#die5").hide();
-	new js.JQuery("#die6").hide();
-	var rollBtn = js.Browser.document.getElementById("rollBtn");
+	new js.JQuery("#dice").hide();
+	new js.JQuery("#dice").children().hide();
 	var Display = function(screen) {
 		currentScreen = screen;
 		if(screen == "start") {
@@ -1230,61 +1247,17 @@ var Dice = function() {
 			new js.JQuery("#start").show();
 		} else if(screen == "roll") {
 			new js.JQuery("#start").hide();
-			console.log("You rolled it...");
+			new js.JQuery("#dice").hide();
+			new js.JQuery("#dice").children().hide();
+			console.log("You rolled a...");
 			new js.JQuery("#roll").show();
-		} else if(screen == "1") {
-			console.log("show die1?");
-			new js.JQuery("#result").show();
-			new js.JQuery("#die1").show();
-			new js.JQuery("#die2").hide();
-			new js.JQuery("#die3").hide();
-			new js.JQuery("#die4").hide();
-			new js.JQuery("#die5").hide();
-			new js.JQuery("#die6").hide();
-		} else if(screen == "2") {
-			new js.JQuery("#result").show();
-			new js.JQuery("#die1").hide();
-			new js.JQuery("#die2").show();
-			new js.JQuery("#die3").hide();
-			new js.JQuery("#die4").hide();
-			new js.JQuery("#die5").hide();
-			new js.JQuery("#die6").hide();
-		} else if(screen == "3") {
-			new js.JQuery("#result").show();
-			new js.JQuery("#die1").hide();
-			new js.JQuery("#die2").hide();
-			new js.JQuery("#die3").show();
-			new js.JQuery("#die4").hide();
-			new js.JQuery("#die5").hide();
-			new js.JQuery("#die6").hide();
-		} else if(screen == "4") {
-			new js.JQuery("#result").show();
-			new js.JQuery("#die1").hide();
-			new js.JQuery("#die2").hide();
-			new js.JQuery("#die3").hide();
-			new js.JQuery("#die4").show();
-			new js.JQuery("#die5").hide();
-			new js.JQuery("#die6").hide();
-		} else if(screen == "5") {
-			new js.JQuery("#result").show();
-			new js.JQuery("#die1").hide();
-			new js.JQuery("#die2").hide();
-			new js.JQuery("#die3").hide();
-			new js.JQuery("#die4").hide();
-			new js.JQuery("#die5").show();
-			new js.JQuery("#die6").hide();
-		} else if(screen == "6") {
-			new js.JQuery("#result").show();
-			new js.JQuery("#die1").hide();
-			new js.JQuery("#die2").hide();
-			new js.JQuery("#die3").hide();
-			new js.JQuery("#die4").hide();
-			new js.JQuery("#die5").hide();
-			new js.JQuery("#die6").show();
+		} else if(screen == diceResult) {
+			console.log(diceResult);
+			new js.JQuery("#dice").show();
+			showDie(screen);
 		}
 	};
 	var finishRoll = function() {
-		console.log(diceResult);
 		Display(diceResult);
 	};
 	var roll = function() {
