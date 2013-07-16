@@ -22,6 +22,7 @@ class Dice extends Sprite {
 		
 		////Define UI elemnts: 
 		var rollBtn = js.Browser.document.getElementById('rollBtn'); 
+		var rollAgainBtn = js.Browser.document.getElementById('rollAgainBtn');
 
 		////
 		function showDie(face) {
@@ -145,6 +146,7 @@ class Dice extends Sprite {
 		////Listeners: 
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 
 		rollBtn.addEventListener(MouseEvent.CLICK, clickHandLer); 			
+		rollAgainBtn.addEventListener(MouseEvent.CLICK, clickHandLer); 			
 
 		//Start game: 
 		Ai('init'); 

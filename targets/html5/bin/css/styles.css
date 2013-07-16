@@ -26,12 +26,12 @@ body {
 
 
 
-#start div.options {
+div.mainMenu {
 	width:150px; 
 	margin: 0 auto;
 }
 
-#start div.options div {
+div.option {
 	background-color: #000; 
 	border: 5px solid #000; 
 	border-radius: 10px;
@@ -39,16 +39,23 @@ body {
 	font-family: Courier; 
 	text-align: center; 
 	font-size: 21px;
-	padding: 5px 0;	
+	padding: 5px;	
 	cursor: default; 
 }
 
-#start div.options div:hover {
+div.option:hover {
 	border-color: #FFF; 
 }
 
-#start div.options div#rollBtn {
+div#rollBtn {
 	font-size: 52px; 
+}
+
+
+div.gameplayMenu {
+	float:right; 
+	margin: 400px 20px 0 0;
+
 }
 
 #dice { top: 90px; }

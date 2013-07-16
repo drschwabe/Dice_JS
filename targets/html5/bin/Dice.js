@@ -1214,6 +1214,7 @@ var Dice = function() {
 	var diceResult = null;
 	var currentScreen = null;
 	var rollBtn = js.Browser.document.getElementById("rollBtn");
+	var rollAgainBtn = js.Browser.document.getElementById("rollAgainBtn");
 	var showDie = function(face) {
 		switch(face) {
 		case "1":
@@ -1287,6 +1288,7 @@ var Dice = function() {
 	};
 	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
 	rollBtn.addEventListener(flash.events.MouseEvent.CLICK,clickHandLer);
+	rollAgainBtn.addEventListener(flash.events.MouseEvent.CLICK,clickHandLer);
 	Ai("init");
 };
 $hxClasses["Dice"] = Dice;
