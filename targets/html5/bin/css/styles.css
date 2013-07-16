@@ -47,8 +47,7 @@ body {
 	border-color: #FFF; 
 }
 
-
-#start div.options div.roll {
+#start div.options div#rollBtn {
 	font-size: 52px; 
 }
 
@@ -58,4 +57,10 @@ p.tip { color: #666; }
 
 #diceResult { 
 	font-weight: bold; 
+}
+
+.canvas { 
+	width: 580px; 
+	height: 466px;
+	background-color: #373942; 
 }

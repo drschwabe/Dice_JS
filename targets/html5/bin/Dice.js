@@ -1216,6 +1216,7 @@ var Dice = function() {
 	new js.JQuery("#start").hide();
 	new js.JQuery("#roll").hide();
 	new js.JQuery("#result").hide();
+	var rollBtn = js.Browser.document.getElementById("rollBtn");
 	var Display = function(screen) {
 		currentScreen = screen;
 		if(screen == "start") {
@@ -1250,6 +1251,10 @@ var Dice = function() {
 			Display("roll");
 		}
 	};
+	var clickHandLer = function(event) {
+		console.log("mouse clicked.");
+		Ai("R");
+	};
 	var keyDownHandler = function(event) {
 		if(event.keyCode == 82) {
 			console.log("--typed R.");
@@ -1257,6 +1262,7 @@ var Dice = function() {
 		} else if(event.keyCode == 69) console.log("--typed E.");
 	};
 	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
+	rollBtn.addEventListener(flash.events.MouseEvent.CLICK,clickHandLer);
 	Ai("init");
 };
 $hxClasses["Dice"] = Dice;

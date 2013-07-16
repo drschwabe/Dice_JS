@@ -3,6 +3,7 @@ import js.jQuery.*;
 import js.Browser.*;
 import flash.events.KeyboardEvent;
 import flash.ui.Keyboard;
+import flash.events.MouseEvent; 
 import haxe.Timer; 
 
 class Dice extends Sprite {
@@ -22,6 +23,9 @@ class Dice extends Sprite {
 		new js.JQuery("#start").hide(); 
 		new js.JQuery("#roll").hide(); 
 		new js.JQuery("#result").hide(); 	
+
+		////Define elemnts: 
+		var rollBtn = js.Browser.document.getElementById('rollBtn'); 
 
 		////Primary function: 
 		function Display(screen) {
@@ -90,6 +94,11 @@ class Dice extends Sprite {
 
 		//############# INPUT ################
 
+		function clickHandLer(event:MouseEvent) {
+			trace('mouse clicked.'); 
+			Ai('R'); 
+		}
+
 		function keyDownHandler(event:KeyboardEvent) {
 
 			if(event.keyCode == Keyboard.R) {
@@ -104,7 +113,8 @@ class Dice extends Sprite {
 		}
 		
 		////Listeners: 
-		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 		
+		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); 
+		rollBtn.addEventListener(MouseEvent.CLICK, clickHandLer); 			
 
 		//Start game: 
 		Ai('init'); 
