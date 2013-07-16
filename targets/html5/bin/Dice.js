@@ -1251,11 +1251,15 @@ var Dice = function() {
 			new js.JQuery("#dice").hide();
 			new js.JQuery("#dice").children().hide();
 			console.log("You rolled a...");
+			rollAgainBtn.innerHTML = "ROLLING";
+			new js.JQuery("#rollAgainBtn").addClass("rolling");
 			new js.JQuery("#roll").show();
 		} else if(screen == diceResult) {
 			console.log(diceResult);
 			new js.JQuery("#dice").show();
 			showDie(screen);
+			rollAgainBtn.innerHTML = "ROLL again";
+			new js.JQuery("#rollAgainBtn").removeClass("rolling");
 		}
 	};
 	var finishRoll = function() {

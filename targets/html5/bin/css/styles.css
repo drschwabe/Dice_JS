@@ -41,6 +41,7 @@ div.option {
 	font-size: 21px;
 	padding: 5px;	
 	cursor: default; 
+	width:100%;
 }
 
 div.option:hover {
@@ -51,11 +52,17 @@ div#rollBtn {
 	font-size: 52px; 
 }
 
+div#rollAgainBtn.rolling { 
+	color: #545454; 
+}
+div#rollAgainBtn.rolling:hover { 
+	border-color: #000; 
+}
 
 div.gameplayMenu {
 	float:right; 
-	margin: 400px 20px 0 0;
-
+	margin: 400px 42px 0 0;
+	width:130px;
 }
 
 #dice { top: 90px; }

@@ -70,17 +70,24 @@ class Dice extends Sprite {
 				new js.JQuery("#start").hide();
 				//Hide previous result if existing:
 				new js.JQuery("#dice").hide();
-				new js.JQuery("#dice").children().hide();				
+				new js.JQuery("#dice").children().hide();
 
 				//Tell user what is going on:
 				trace("You rolled a..."); 
+				rollAgainBtn.innerHTML = 'ROLLING'; 
+				new js.JQuery("#rollAgainBtn").addClass("rolling"); 
+
 				//Reveal the die: 
 				new js.JQuery("#roll").show(); 
 			
 			} else if (screen == diceResult) {
 				trace(diceResult); 
 				new js.JQuery("#dice").show();			
-				showDie(screen);				
+				showDie(screen);
+				//Return rolling UI button back to normal: 				
+				rollAgainBtn.innerHTML = 'ROLL again'; 
+				//Reset rolling button: 	
+				new js.JQuery("#rollAgainBtn").removeClass("rolling"); 
 			}
 
 			//Display is finished so defer to #Input listeners or continue with remainder of Ai execution. 
