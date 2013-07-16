@@ -19,12 +19,20 @@ class Dice extends Sprite {
 
 
 		//############# DISPLAY ################
-		////Initial settings:  
+		////Hide everything initially: 
+	
 		new js.JQuery("#start").hide(); 
 		new js.JQuery("#roll").hide(); 
-		new js.JQuery("#result").hide(); 	
+		new js.JQuery("#result").hide();
 
-		////Define elemnts: 
+		new js.JQuery("#die1").hide();
+		new js.JQuery("#die2").hide();
+		new js.JQuery("#die3").hide();
+		new js.JQuery("#die4").hide();
+		new js.JQuery("#die5").hide();
+		new js.JQuery("#die6").hide();	
+
+		////Define UI elemnts: 
 		var rollBtn = js.Browser.document.getElementById('rollBtn'); 
 
 		////Primary function: 
@@ -39,19 +47,70 @@ class Dice extends Sprite {
 				new js.JQuery("#start").show(); 
 
 			} else if (screen == 'roll') {
+				new js.JQuery("#start").hide(); 
 				//Tell user what is going on:
-				trace("You rolled it..."); 
-				new js.JQuery("#start").hide(); 		
+				trace("You rolled a..."); 
+				//Reveal the die: 
 				new js.JQuery("#roll").show(); 
-				//Hide current result, if any: 
-				new js.JQuery("#result").hide(); 	
+						
 
-			} else if (screen == diceResult) {
-				trace("You rolled a " + diceResult + "\n\n"); 
-				new js.JQuery("#result").show(); 	
-				js.Browser.document.getElementById('diceResult').innerHTML = diceResult;
-		
+			} else if (screen == '1') {
+				trace('show die1?'); 
+				new js.JQuery("#result").show();				
+				new js.JQuery("#die1").show();
+				new js.JQuery("#die2").hide();
+				new js.JQuery("#die3").hide();
+				new js.JQuery("#die4").hide();
+				new js.JQuery("#die5").hide();
+				new js.JQuery("#die6").hide();				
+
+			
+			} else if (screen == '2') {
+				new js.JQuery("#result").show();				
+				new js.JQuery("#die1").hide();
+				new js.JQuery("#die2").show();
+				new js.JQuery("#die3").hide();
+				new js.JQuery("#die4").hide();
+				new js.JQuery("#die5").hide();
+				new js.JQuery("#die6").hide();		
+
+			} else if (screen == '3') {
+				new js.JQuery("#result").show();							
+				new js.JQuery("#die1").hide();
+				new js.JQuery("#die2").hide();
+				new js.JQuery("#die3").show();
+				new js.JQuery("#die4").hide();
+				new js.JQuery("#die5").hide();
+				new js.JQuery("#die6").hide();			
+
+			} else if (screen == '4') {
+				new js.JQuery("#result").show();							
+				new js.JQuery("#die1").hide();
+				new js.JQuery("#die2").hide();
+				new js.JQuery("#die3").hide();
+				new js.JQuery("#die4").show();
+				new js.JQuery("#die5").hide();
+				new js.JQuery("#die6").hide();		
+
+			} else if (screen == '5') {
+				new js.JQuery("#result").show();							
+				new js.JQuery("#die1").hide();
+				new js.JQuery("#die2").hide();
+				new js.JQuery("#die3").hide();
+				new js.JQuery("#die4").hide();
+				new js.JQuery("#die5").show();
+				new js.JQuery("#die6").hide();		
+	
+			} else if (screen == '6') {
+				new js.JQuery("#result").show();							
+				new js.JQuery("#die1").hide();
+				new js.JQuery("#die2").hide();
+				new js.JQuery("#die3").hide();
+				new js.JQuery("#die4").hide();
+				new js.JQuery("#die5").hide();
+				new js.JQuery("#die6").show();		
 			}
+
 			//Display is finished so defer to #Input listeners or continue with remainder of Ai execution. 
 		}
 
@@ -59,6 +118,7 @@ class Dice extends Sprite {
 
 		////Actions: 
 		function finishRoll() {
+			trace(diceResult); 
 			Display(diceResult); 
 		}
 		function roll() {

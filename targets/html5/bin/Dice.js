@@ -1216,6 +1216,12 @@ var Dice = function() {
 	new js.JQuery("#start").hide();
 	new js.JQuery("#roll").hide();
 	new js.JQuery("#result").hide();
+	new js.JQuery("#die1").hide();
+	new js.JQuery("#die2").hide();
+	new js.JQuery("#die3").hide();
+	new js.JQuery("#die4").hide();
+	new js.JQuery("#die5").hide();
+	new js.JQuery("#die6").hide();
 	var rollBtn = js.Browser.document.getElementById("rollBtn");
 	var Display = function(screen) {
 		currentScreen = screen;
@@ -1223,17 +1229,62 @@ var Dice = function() {
 			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
 			new js.JQuery("#start").show();
 		} else if(screen == "roll") {
-			console.log("You rolled it...");
 			new js.JQuery("#start").hide();
+			console.log("You rolled it...");
 			new js.JQuery("#roll").show();
-			new js.JQuery("#result").hide();
-		} else if(screen == diceResult) {
-			console.log("You rolled a " + diceResult + "\n\n");
+		} else if(screen == "1") {
+			console.log("show die1?");
 			new js.JQuery("#result").show();
-			js.Browser.document.getElementById("diceResult").innerHTML = diceResult;
+			new js.JQuery("#die1").show();
+			new js.JQuery("#die2").hide();
+			new js.JQuery("#die3").hide();
+			new js.JQuery("#die4").hide();
+			new js.JQuery("#die5").hide();
+			new js.JQuery("#die6").hide();
+		} else if(screen == "2") {
+			new js.JQuery("#result").show();
+			new js.JQuery("#die1").hide();
+			new js.JQuery("#die2").show();
+			new js.JQuery("#die3").hide();
+			new js.JQuery("#die4").hide();
+			new js.JQuery("#die5").hide();
+			new js.JQuery("#die6").hide();
+		} else if(screen == "3") {
+			new js.JQuery("#result").show();
+			new js.JQuery("#die1").hide();
+			new js.JQuery("#die2").hide();
+			new js.JQuery("#die3").show();
+			new js.JQuery("#die4").hide();
+			new js.JQuery("#die5").hide();
+			new js.JQuery("#die6").hide();
+		} else if(screen == "4") {
+			new js.JQuery("#result").show();
+			new js.JQuery("#die1").hide();
+			new js.JQuery("#die2").hide();
+			new js.JQuery("#die3").hide();
+			new js.JQuery("#die4").show();
+			new js.JQuery("#die5").hide();
+			new js.JQuery("#die6").hide();
+		} else if(screen == "5") {
+			new js.JQuery("#result").show();
+			new js.JQuery("#die1").hide();
+			new js.JQuery("#die2").hide();
+			new js.JQuery("#die3").hide();
+			new js.JQuery("#die4").hide();
+			new js.JQuery("#die5").show();
+			new js.JQuery("#die6").hide();
+		} else if(screen == "6") {
+			new js.JQuery("#result").show();
+			new js.JQuery("#die1").hide();
+			new js.JQuery("#die2").hide();
+			new js.JQuery("#die3").hide();
+			new js.JQuery("#die4").hide();
+			new js.JQuery("#die5").hide();
+			new js.JQuery("#die6").show();
 		}
 	};
 	var finishRoll = function() {
+		console.log(diceResult);
 		Display(diceResult);
 	};
 	var roll = function() {

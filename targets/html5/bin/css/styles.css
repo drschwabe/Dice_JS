@@ -59,8 +59,58 @@ p.tip { color: #666; }
 	font-weight: bold; 
 }
 
-.canvas { 
-	width: 580px; 
-	height: 466px;
-	background-color: #373942; 
+div.die { 
+	width: 225px; 
+	height: 225px; 
+	background-color: #FFF; 
+	color:#000;
+	margin: 0 auto 0;
+	position:relative;
 }
+
+div.die div.dot {
+	/*display:inline-block;*/
+	border-radius: 100%;
+	background-color:#000;
+	width: 50px; 
+	height: 50px; 
+	position:absolute; 
+	margin:20px;
+}
+
+
+div.die div.topLeft {
+	top: 0; 
+	left: 0;   
+}
+
+div.die div.topCenter {
+	top: 0; 
+	left: 69px;  
+}
+
+div.die div.topRight {
+	top: 0; 
+	right: 0;  
+}
+
+div.die div.center {
+	top: 69px; 
+	left: 69px;  
+}
+div.die div.botLeft {
+	bottom: 0px; 
+	left: 0;  
+}
+
+div.die div.botCenter {
+	bottom: 0px; 
+	left: 69px;  
+}
+
+
+div.die div.botRight {
+	bottom: 0px; 
+	right: 0;  
+}
+
