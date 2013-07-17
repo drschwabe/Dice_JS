@@ -51,18 +51,23 @@ class Dice extends Sprite {
 				}
 		}
 
+		//Timed actions: 
 		function stopRolling() {
 			//Return rolling button back to normal: 				
 			rollAgainBtn.innerHTML = 'ROLL again'; 
 			new js.JQuery("#rollAgainBtn").removeClass("rolling"); 
 			trace(diceResult); 
+
+			//Final animation for the die: 
+			//new js.JQuery("#die ").addClass("animated bounceInDown"); 
 		}
 
 		////Hide everything initially: 
 		new js.JQuery("#start").hide(); 
+		new js.JQuery("#rollBtn ").hide(); 		
 		new js.JQuery("#gameplayUI").hide(); 
 		new js.JQuery("#dice").hide();
-		//new js.JQuery(".face").children().hide();
+
 
 		////Primary function: 
 		function Display(screen) {
@@ -71,12 +76,20 @@ class Dice extends Sprite {
 			currentScreen = screen; 	
 
 			if (screen == 'start') {
-				//Welcome user: 
-				trace("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
-				new js.JQuery("#start").show();
+
 				//Hide previous screens if existing: 
 				new js.JQuery("#gameplayUI").hide(); 
 				new js.JQuery("#dice").hide(); 
+
+				//Welcome user: 
+				trace("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
+				new js.JQuery("#start").show();
+				
+				//Animate stuff: 
+				new js.JQuery("#logo").addClass('animated bounceIn'); 
+				new js.JQuery("#rollBtn ").show(); 
+				new js.JQuery("#rollBtn ").addClass("animated bounceInUp"); 
+		
 
 			} else if (screen == 'rolling') {
 				//Hide previous menu if existing: 
@@ -84,9 +97,6 @@ class Dice extends Sprite {
 				//Unhide the screens:   
 				new js.JQuery("#gameplayUI").show(); 
 				new js.JQuery("#dice").show();			
-
-				////Commence some rolling action...
-				new js.JQuery("#die").attr('class', 'animateRoll'); 
 
 				//UI...
 				trace("Rolling..."); 

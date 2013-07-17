@@ -1244,20 +1244,23 @@ var Dice = function() {
 		console.log(diceResult);
 	};
 	new js.JQuery("#start").hide();
+	new js.JQuery("#rollBtn ").hide();
 	new js.JQuery("#gameplayUI").hide();
 	new js.JQuery("#dice").hide();
 	var Display = function(screen) {
 		currentScreen = screen;
 		if(screen == "start") {
-			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
-			new js.JQuery("#start").show();
 			new js.JQuery("#gameplayUI").hide();
 			new js.JQuery("#dice").hide();
+			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
+			new js.JQuery("#start").show();
+			new js.JQuery("#logo").addClass("animated bounceIn");
+			new js.JQuery("#rollBtn ").show();
+			new js.JQuery("#rollBtn ").addClass("animated bounceInUp");
 		} else if(screen == "rolling") {
 			new js.JQuery("#start").hide();
 			new js.JQuery("#gameplayUI").show();
 			new js.JQuery("#dice").show();
-			new js.JQuery("#die").attr("class","animateRoll");
 			console.log("Rolling...");
 			rollAgainBtn.innerHTML = "ROLLING";
 			new js.JQuery("#rollAgainBtn").addClass("rolling");

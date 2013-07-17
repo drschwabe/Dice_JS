@@ -1,6 +1,8 @@
+**[Demo](http://htmlpreview.github.io/?https://github.com/mrschwabe/Dice_Haxe_OpenFL-HTML5/blob/master/targets/html5/bin/dice.html)**
+
 ### Compile info ###
 
-Project is coded in Haxe (Haxe/AS3/JS/jQuery) and targets HTML5 via OpenFL. I also made some tweaks to the standard OpenFL workflow in order to build UI in raw HTML/CSS.
+Project is coded in Haxe (Haxe/AS3/JS/jQuery) and targets HTML5 via OpenFL. I also made some tweaks to the standard OpenFL workflow in order to do UI and graphics in HTML/CSS.  
 
 Install **[Haxe](http://haxe.org/download)**<br />
 Instal **[OpenFL](https://github.com/openfl/openfl/wiki/Get-Started)**

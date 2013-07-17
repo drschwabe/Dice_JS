@@ -29,7 +29,6 @@ body {
 
 
 
-
 div.mainMenu {
 	width:150px; 
 	margin: 0 auto;
@@ -54,8 +53,18 @@ div.option:hover {
 
 div#rollBtn {
 	font-size: 52px; 
+	overflow: hidden;
+	-moz-animation-duration: 0.5s;
+	-moz-animation-delay: 1.7s;	
+	-webkit-animation-delay: 1.7s;
+	-webkit-animation-duration: 0.5s;
+
 }
 
+#logo {
+	-moz-animation-delay: 0.5s;	
+	-webkit-animation-delay: 0.5s;
+}
 
 div.gameplayMenu {
 	position:relative;
@@ -151,13 +160,13 @@ div#rollAgainBtn.rolling:hover {
 #die.show-back   { transform: translateZ( -50px ) rotateX(-180deg ); }
 #die.show-bottom { transform: translateZ( -120px ) rotateX(  90deg ); }
 
-#die.animateRoll { 
+/*#die.animateRoll { 
 	transition: transform 0.3s;  
 	-webkit-transition: -webkit-transform 0.25s;  		
 	webkit-transition-timing-function: cubic-bezier(0.9,0,0,0.1); 
 	-webkit-transition-timing-function: cubic-bezier(0.9,0,0,0.1); 
 
-}
+}*/
 
 
 div.face { 
