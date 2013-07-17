@@ -1253,21 +1253,25 @@ var Dice = function() {
 			new js.JQuery("#start").show();
 			new js.JQuery("#gameplayUI").hide();
 			new js.JQuery("#dice").hide();
-		} else if(screen == diceResult) {
+		} else if(screen == "rolling") {
 			new js.JQuery("#start").hide();
+			new js.JQuery("#gameplayUI").show();
+			new js.JQuery("#dice").show();
+			new js.JQuery("#die").attr("class","animateRoll");
 			console.log("Rolling...");
 			rollAgainBtn.innerHTML = "ROLLING";
 			new js.JQuery("#rollAgainBtn").addClass("rolling");
 			haxe.Timer.delay(stopRolling,900);
-			new js.JQuery("#gameplayUI").show();
-			new js.JQuery("#dice").show();
-			showDie(screen);
 		}
+	};
+	var finishRoll = function() {
+		showDie(diceResult);
 	};
 	var roll = function() {
 		var computation = Math.ceil(Math.random() * SIDES - 1) + 1;
 		diceResult = Std.string(computation);
-		Display(diceResult);
+		Display("rolling");
+		haxe.Timer.delay(finishRoll,700);
 	};
 	var Ai = function(command) {
 		if(command == "init") {
@@ -1284,7 +1288,10 @@ var Dice = function() {
 		if(event.keyCode == 82) {
 			console.log("--typed R.");
 			Ai("R");
-		} else if(event.keyCode == 69) console.log("--typed E.");
+		} else if(event.keyCode == 69) console.log("--typed E."); else if(event.keyCode == 27) {
+			console.log("--typed ESC.");
+			Display("start");
+		}
 	};
 	this.get_stage().addEventListener(flash.events.KeyboardEvent.KEY_DOWN,keyDownHandler);
 	rollBtn.addEventListener(flash.events.MouseEvent.CLICK,clickHandLer);

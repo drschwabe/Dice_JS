@@ -58,7 +58,6 @@ class Dice extends Sprite {
 			trace(diceResult); 
 		}
 
-
 		////Hide everything initially: 
 		new js.JQuery("#start").hide(); 
 		new js.JQuery("#gameplayUI").hide(); 
@@ -79,22 +78,25 @@ class Dice extends Sprite {
 				new js.JQuery("#gameplayUI").hide(); 
 				new js.JQuery("#dice").hide(); 
 
-			} else if (screen == diceResult) {
+			} else if (screen == 'rolling') {
 				//Hide previous menu if existing: 
 				new js.JQuery("#start").hide();
+				//Unhide the screens:   
+				new js.JQuery("#gameplayUI").show(); 
+				new js.JQuery("#dice").show();			
 
-				//Commence some rolling action...
+				////Commence some rolling action...
+				new js.JQuery("#die").attr('class', 'animateRoll'); 
+
+				//UI...
 				trace("Rolling..."); 
 				rollAgainBtn.innerHTML = 'ROLLING'; 
 				new js.JQuery("#rollAgainBtn").addClass("rolling"); 	
+
+				//animation...
+
 				//and then stop it: 
 				haxe.Timer.delay(stopRolling, 900); 
-
-				//Unhide the screens:   
-				new js.JQuery("#gameplayUI").show(); 
-				new js.JQuery("#dice").show();		
-
-				showDie(screen);
 
 			}
 
@@ -104,6 +106,11 @@ class Dice extends Sprite {
 		//############# AI ################
 
 		////Actions: 
+
+		function finishRoll() {
+		 	showDie(diceResult); 
+		}
+
 		function roll() {
 			//Generate a random number from 1 to 6:  
 			var computation = Math.ceil(Math.random() * SIDES - 1) + 1; 
@@ -111,7 +118,12 @@ class Dice extends Sprite {
 			//Convert to string:
 			diceResult = Std.string(computation); 
 
-			Display(diceResult); 
+			//Initiate rolling animation... 
+			Display('rolling'); 
+
+			//then reveal the result: 
+			haxe.Timer.delay(finishRoll, 700); 			
+
 		}
 
 		///Primary function: 
@@ -152,7 +164,11 @@ class Dice extends Sprite {
 
 			} else if (event.keyCode == Keyboard.E) {
 				trace("--typed E."); 
-			}
+		
+			} else if (event.keyCode == Keyboard.ESCAPE) {
+				trace("--typed ESC."); 
+				Display('start'); 				
+			}			
 		}
 		
 		////Listeners: 
