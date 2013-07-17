@@ -51,9 +51,17 @@ class Dice extends Sprite {
 				}
 		}
 
+		function stopRolling() {
+			//Return rolling button back to normal: 				
+			rollAgainBtn.innerHTML = 'ROLL again'; 
+			new js.JQuery("#rollAgainBtn").removeClass("rolling"); 
+			trace(diceResult); 
+		}
+
+
 		////Hide everything initially: 
 		new js.JQuery("#start").hide(); 
-		new js.JQuery("#roll").hide(); 
+		new js.JQuery("#gameplayUI").hide(); 
 		new js.JQuery("#dice").hide();
 		//new js.JQuery(".face").children().hide();
 
@@ -67,36 +75,27 @@ class Dice extends Sprite {
 				//Welcome user: 
 				trace("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
 				new js.JQuery("#start").show();
-				new js.JQuery("#roll").hide(); 
+				//Hide previous screens if existing: 
+				new js.JQuery("#gameplayUI").hide(); 
 				new js.JQuery("#dice").hide(); 
 
-
-			} else if (screen == 'roll') {
-				new js.JQuery("#start").hide();
-				//Hide previous result if existing:
-				//new js.JQuery("#dice").hide();
-				//new js.JQuery("#dice").children().hide();
-				//new js.JQuery(".face").hide(); //hide Die faces too
-
-				//Tell user what is going on:
-				trace("You rolled a..."); 
-				rollAgainBtn.innerHTML = 'ROLLING'; 
-				new js.JQuery("#rollAgainBtn").addClass("rolling"); 
-
-				//Reveal the rolling:  
-				new js.JQuery("#roll").show(); 
-				new js.JQuery("#dice").show();		
-			
 			} else if (screen == diceResult) {
-				trace(diceResult); 
+				//Hide previous menu if existing: 
+				new js.JQuery("#start").hide();
 
-				
+				//Commence some rolling action...
+				trace("Rolling..."); 
+				rollAgainBtn.innerHTML = 'ROLLING'; 
+				new js.JQuery("#rollAgainBtn").addClass("rolling"); 	
+				//and then stop it: 
+				haxe.Timer.delay(stopRolling, 900); 
+
+				//Unhide the screens:   
+				new js.JQuery("#gameplayUI").show(); 
+				new js.JQuery("#dice").show();		
+
 				showDie(screen);
 
-				//Return rolling UI button back to normal: 				
-				rollAgainBtn.innerHTML = 'ROLL again'; 
-				//Reset rolling button: 	
-				new js.JQuery("#rollAgainBtn").removeClass("rolling"); 
 			}
 
 			//Display is finished so defer to #Input listeners or continue with remainder of Ai execution. 
@@ -105,9 +104,6 @@ class Dice extends Sprite {
 		//############# AI ################
 
 		////Actions: 
-		function finishRoll() {
-			Display(diceResult); 
-		}
 		function roll() {
 			//Generate a random number from 1 to 6:  
 			var computation = Math.ceil(Math.random() * SIDES - 1) + 1; 
@@ -115,8 +111,7 @@ class Dice extends Sprite {
 			//Convert to string:
 			diceResult = Std.string(computation); 
 
-			//Wait a second before revealing the roll result: 
-			haxe.Timer.delay(finishRoll, 1000); 
+			Display(diceResult); 
 		}
 
 		///Primary function: 
@@ -132,12 +127,8 @@ class Dice extends Sprite {
 
 				//Commence the dice rolling! 
 				roll(); 
-
-				//Update the screen: 
-				Display('roll'); 
 			}
 		}
-
 
 		//############# INPUT ################
 

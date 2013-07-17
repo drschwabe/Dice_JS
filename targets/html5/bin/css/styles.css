@@ -10,7 +10,7 @@ body {
 	position: relative; 
 }
 
-#start, #roll, #dice {
+#start, #gameplayUI, #dice {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -18,7 +18,7 @@ body {
 	width:580px; 
 }
 
-#roll {
+#gameplayUI {
 	z-index: 2;
 }
 

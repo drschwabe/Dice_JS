@@ -1238,47 +1238,43 @@ var Dice = function() {
 			break;
 		}
 	};
+	var stopRolling = function() {
+		rollAgainBtn.innerHTML = "ROLL again";
+		new js.JQuery("#rollAgainBtn").removeClass("rolling");
+		console.log(diceResult);
+	};
 	new js.JQuery("#start").hide();
-	new js.JQuery("#roll").hide();
+	new js.JQuery("#gameplayUI").hide();
 	new js.JQuery("#dice").hide();
 	var Display = function(screen) {
 		currentScreen = screen;
 		if(screen == "start") {
 			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");
 			new js.JQuery("#start").show();
-			new js.JQuery("#roll").hide();
+			new js.JQuery("#gameplayUI").hide();
 			new js.JQuery("#dice").hide();
-		} else if(screen == "roll") {
+		} else if(screen == diceResult) {
 			new js.JQuery("#start").hide();
-			console.log("You rolled a...");
+			console.log("Rolling...");
 			rollAgainBtn.innerHTML = "ROLLING";
 			new js.JQuery("#rollAgainBtn").addClass("rolling");
-			new js.JQuery("#roll").show();
+			haxe.Timer.delay(stopRolling,900);
+			new js.JQuery("#gameplayUI").show();
 			new js.JQuery("#dice").show();
-		} else if(screen == diceResult) {
-			console.log(diceResult);
 			showDie(screen);
-			rollAgainBtn.innerHTML = "ROLL again";
-			new js.JQuery("#rollAgainBtn").removeClass("rolling");
 		}
-	};
-	var finishRoll = function() {
-		Display(diceResult);
 	};
 	var roll = function() {
 		var computation = Math.ceil(Math.random() * SIDES - 1) + 1;
 		diceResult = Std.string(computation);
-		haxe.Timer.delay(finishRoll,1000);
+		Display(diceResult);
 	};
 	var Ai = function(command) {
 		if(command == "init") {
 			Display("start");
 			return;
 		}
-		if(command == "R") {
-			roll();
-			Display("roll");
-		}
+		if(command == "R") roll();
 	};
 	var clickHandLer = function(event) {
 		console.log("mouse clicked.");
