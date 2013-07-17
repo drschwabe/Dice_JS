@@ -76,7 +76,7 @@ div.gameplayMenu div#homeBtn {
 
 
 div.gameplayMenu div#homeBtn:hover {
-	background-image: url(../img/mainMenu_btn_hover.png);
+	background-position: center -77px;
 	opacity: 1;
 }
 

@@ -142,6 +142,7 @@ class Dice extends Sprite {
 			}
 		}
 
+		//Keyboard controls:
 		function keyDownHandler(event:KeyboardEvent) {
 
 			if(event.keyCode == Keyboard.R) {
@@ -151,7 +152,6 @@ class Dice extends Sprite {
 
 			} else if (event.keyCode == Keyboard.E) {
 				trace("--typed E."); 
-				//Ai(true, event.keyCode); 
 			}
 		}
 		
