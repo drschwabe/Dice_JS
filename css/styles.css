@@ -15,7 +15,8 @@ body {
 #die {
 	position:absolute; 
   	transform-style: preserve-3d;
-  	transition: 1s; 
+  	transition: 0.5s; 
+  	transition-timing-function: ease-out;
   	height:100%; 
   	width:100%; 
 }
@@ -57,18 +58,15 @@ body {
 #die.show-bottom { transform: translateZ( -100px ) rotateX(   90deg ); }
 
 #die.spin {
-	animation: spin 2s;
-	animation-timing-function: linear; 
-	animation-iteration-count: infinite;
+	animation: spin 1.5s;
+	animation-timing-function: ease-in; 
+	animation-iteration-count: 1;
 }
 
 @keyframes spin {
     0% { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
 
-    50% { transform: translateZ(-100px) rotateX(180deg) rotateY(180deg) rotateZ(180deg); }
-
-    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }    
-
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(-360deg) rotateZ(-360deg); }            
 }
 
 

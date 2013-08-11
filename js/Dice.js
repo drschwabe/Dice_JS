@@ -41,4 +41,8 @@ setTimeout(function () {
 	die.addClass('spin'); 
 	}, 1000); 
 
+
+setTimeout(function () {
+	die.addClass('show-bottom'); 
+	}, 2500); 
 }); 
