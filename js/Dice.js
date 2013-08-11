@@ -3,6 +3,7 @@ $(document).ready(function() {
 	console.log('hello world'); 
 
 	var die = $('#die'); 
+/*
 
 	//Animate the die after 1 second: 
 	setTimeout(function () {
@@ -33,5 +34,11 @@ $(document).ready(function() {
 		die.removeClass(); 		
 		die.addClass('show-back'); 
 	}, 6000); 			
+*/
+
+
+setTimeout(function () {
+	die.addClass('rotateEverywhere'); 
+	}, 1000); 
 
 }); 
