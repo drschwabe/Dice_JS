@@ -8,8 +8,32 @@ $(document).ready(function() {
 	//Define UI elements: 
 	var die = $('#die'); 
 
-	$('.screen').hide(); 
-	$('#startScreen').show(); 
+
+	//main function:
+	function Display(screen) {
+		
+		//Log the current screen Ai can keep track of where we are: 		
+		currentScreen = screen; 
+
+		if (screen == 'Starting') {
+
+			//Hide previous screens if existing: 
+			$('.screen').hide(); 			
+
+			//Welcome user: 
+			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");			
+			$('#startScreen').show(); 
+
+		}
+
+		if (screen == 'Rolling') {
+			$('#startScreen').hide(); 
+			$('#dieScreen').show();
+			$('#gameplayUI').show();	
+		}
+
+
+	}
 
 
 	//############# AI ################
@@ -17,14 +41,11 @@ $(document).ready(function() {
 	function Ai(command) {
 
 		if (command == 'Start') {
-			$('.screen').hide(); 			
-			$('#startScreen').show(); 
+			Display('Starting');
 		}
 
 		if (command == 'Roll') {
-			$('#startScreen').hide(); 
-			$('#dieScreen').show();
-			$('#gameplayUI').show();	
+			Display('Rolling')
 
 			die.removeClass(); 
 			die.addClass('default'); 			
@@ -45,7 +66,7 @@ $(document).ready(function() {
 	//############# INPUT ################
 
 	/* Main menu: */
-	$('#rollBtn').click(function() {
+	$('#rollBtn, #rollAgainBtn').click(function() {
 		Ai('Roll')
 	}); 
 
@@ -53,9 +74,8 @@ $(document).ready(function() {
 	$('#homeBtn').click(function() {
 		Ai('Start')
 	}); 	
+	
 
-	$('#rollAgainBtn').click(function() {
-		Ai('Roll')
-	}); 	
+	Ai('Start'); 
 
 });
