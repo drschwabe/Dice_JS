@@ -45,19 +45,27 @@ $(document).ready(function() {
 		}
 
 		if (command == 'Roll') {
-			Display('Rolling')
 
+			//Perform the dice roll computation: 
+			var rollResult = Math.ceil(Math.random() * 6 - 1) + 1;
+			console.log(rollResult); 
+
+			//Reset animation classes if any were added previously: 
 			die.removeClass(); 
-			die.addClass('default'); 			
+			die.addClass('default'); 						
 
+			//In one second, initiate the spin animation: 
 			setTimeout(function () {
 				die.addClass('spin'); 
 				}, 1000); 
 
+			//1.5 seconds later, add the final class: 
 			setTimeout(function () {
 				die.addClass('show-bottom'); 
 				}, 2500); 
 
+			//Display rolling screen: 
+			Display('Rolling'); 			
 		}
 	}
 
