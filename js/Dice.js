@@ -38,6 +38,8 @@ $(document).ready(function() {
 
 	//############# AI ################
 
+	defaultClass = 'show-front'; 
+
 	function Ai(command) {
 
 		if (command == 'Start') {
@@ -52,17 +54,42 @@ $(document).ready(function() {
 
 			//Reset animation classes if any were added previously: 
 			die.removeClass(); 
-			die.addClass('default'); 						
+			die.addClass(defaultClass); 	
 
-			//In one second, initiate the spin animation: 
+			//Determine the final class based on the rollResult: 
+
+			switch(rollResult) {
+				case 1: 
+					rollResultClass = 'show-top' ; 
+					break;
+				case 2: 
+					rollResultClass = 'show-front' ; 
+					break;
+				case 3: 
+					rollResultClass = 'show-right' ; 
+					break;
+				case 4: 
+					rollResultClass = 'show-left' ; 
+					break;
+				case 5: 
+					rollResultClass = 'show-back' ; 
+					break;
+				case 6: 
+					rollResultClass = 'show-bottom' ; 
+					break;
+				}
+
+			//In one second, initiate the spin animation...
 			setTimeout(function () {
 				die.addClass('spin'); 
 				}, 1000); 
 
-			//1.5 seconds later, add the final class: 
-			setTimeout(function () {
-				die.addClass('show-bottom'); 
-				}, 2500); 
+	
+			//And add the final class: 
+			setTimeout(function() {
+				die.addClass(rollResultClass); 
+			}, 2500);  				
+
 
 			//Display rolling screen: 
 			Display('Rolling'); 			
