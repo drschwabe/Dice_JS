@@ -8,6 +8,9 @@ body {
 	width: 580px;
 	margin: 0 auto 0 auto; 
 	position: relative; 
+	background-color: #373942; 		
+	height: 466px; 
+
 }
 
 
@@ -20,8 +23,11 @@ body {
 	left: 0px;
 	width:580px; 
 	height: 466px;
-	background-color: #373942; 	
 }
+
+#dieScreen { z-index: 1; }
+
+#gameplayUI { z-index: 2; }
 
 
 #startScreen img { 
@@ -60,6 +66,47 @@ div#rollBtn {
 	padding-top:100px; 
 	height: 366px;
 
+}
+
+/* Gameplay UI */
+
+
+div.gameplayMenu {
+	position:relative;
+	height: 466px; 
+}
+div.gameplayMenu div {
+	position:absolute;
+}
+
+div.gameplayMenu div#homeBtn {
+	background: url(../img/btn_mainMenu.png) no-repeat center top; 
+	top:10px;
+	right:10px;
+	width: 45px;
+	height:71px; 
+	opacity: 0.5; 
+}
+
+
+div.gameplayMenu div#homeBtn:hover {
+	background-position: center -77px;
+	opacity: 1;
+}
+
+div.gameplayMenu div#rollAgainBtn {
+	bottom:0;
+	right:15px;
+	width:150px; 
+	border-width: 4px;
+}
+
+div#rollAgainBtn.rolling { 
+	color: #545454; 
+	opacity: 0.5;
+}
+div#rollAgainBtn.rolling:hover { 
+	border-color: #000; 
 }
 
 
