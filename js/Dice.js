@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 
 setTimeout(function () {
-	die.addClass('rotateEverywhere'); 
+	die.addClass('spin'); 
 	}, 1000); 
 
 }); 

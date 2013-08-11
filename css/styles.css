@@ -56,7 +56,21 @@ body {
 #die.show-top    { transform: translateZ( -100px ) rotateX(  -90deg ); }
 #die.show-bottom { transform: translateZ( -100px ) rotateX(   90deg ); }
 
-#die.rotateEverywhere  { transform: translateZ( -100px ) rotateY(    120deg ) rotateZ(320deg) rotateX(50deg); }
+#die.spin {
+	animation: spin 2s;
+	animation-timing-function: linear; 
+	animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+    0% { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+
+    50% { transform: translateZ(-100px) rotateX(180deg) rotateY(180deg) rotateZ(180deg); }
+
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }    
+
+}
+
 
 div.face { 
 	width: 192px; 
