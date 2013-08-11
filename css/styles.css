@@ -4,6 +4,68 @@ body {
 	margin:100px 0 0; 
 }
 
+.container {
+	width: 580px;
+	margin: 0 auto 0 auto; 
+	position: relative; 
+}
+
+
+
+/* Screens */ 
+
+.screen {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width:580px; 
+	height: 466px;
+	background-color: #373942; 	
+}
+
+
+#startScreen img { 
+	display:block; 
+	margin: 0 auto;
+}
+
+
+div.mainMenu {
+	width:150px; 
+	margin: 0 auto;
+}
+
+div.option {
+	background-color: #000; 
+	border: 5px solid #000; 
+	border-radius: 10px;
+	margin-bottom: 15px; 
+	font-family: Courier; 
+	text-align: center; 
+	font-size: 21px;
+	padding: 5px;	
+	cursor: default; 
+	width:100%;
+}
+
+div.option:hover {
+	border-color: #FFF; 
+}
+
+div#rollBtn {
+	font-size: 52px; 
+}
+
+#dieScreen { 
+	padding-top:100px; 
+	height: 366px;
+
+}
+
+
+
+/* Die */
+
 #dieContainer {
 	height: 200px; 
 	width: 200px; 
@@ -129,3 +191,4 @@ div.botRight {
 	bottom: 0px; 
 	right: 0;  
 }
+
