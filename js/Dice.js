@@ -31,13 +31,13 @@ $(document).ready(function() {
 			$('#dieScreen').show();
 			$('#gameplayUI').show();	
 		}
-
-
 	}
 
 
 	//############# AI ################	
 
+	//Set some initial parameters: 
+	var delayTime;  
 	var spinFromClass = 'spinFromFront'; 
 	var spinToClass = 'spintToFront'; 
 
@@ -97,19 +97,17 @@ $(document).ready(function() {
 	function Ai(command) {
 
 		if (command == 'Start') {
+			delayTime = 600;
 			Display('Starting');
 		}
 
 		if (command == 'Roll') {
 
 
-
 			//Perform the dice roll computation: 
 			rollResult = Math.ceil(Math.random() * 6 - 1) + 1;
 			console.log(rollResult); 
 
-
-		
 
 			//Display rolling screen: 
 			Display('Rolling'); 			
@@ -118,7 +116,7 @@ $(document).ready(function() {
 			//In one second, initiate the spin animation...
 			setTimeout(function () {
 				die.addClass(spinFromClass); 
-				}, 1000); 
+				}, delayTime); 
 
 	
 			//And add the final class: 
@@ -127,10 +125,10 @@ $(document).ready(function() {
 				//Determine the final class based on the rollResult..
 				spinToClass = determineDieClass(rollResult, 'spinTo'); 
 
-				//Delete the previously set class and set the new one: 				
+				//Replace the previously set class with the new one:  				
 				die.attr('class', spinToClass); 
 
-			}, 2500);  
+			}, delayTime + 1500);  
 
 
 			setTimeout(function() {
@@ -138,13 +136,15 @@ $(document).ready(function() {
 				//Based on the result, determine a class we start from for the next roll (this ensures animation starts from the last completed roll): 
 				spinFromClass = determineDieClass(rollResult, 'spinFrom'); 	
 
-			}, 3000); 
+				//Update the delay time to reduce it for subsequent rolls: 
+				delayTime = 0; 
+
+			}, delayTime + 2000); 
 
 
 
 		}	
 	}
-
 
 
 	//############# INPUT ################
