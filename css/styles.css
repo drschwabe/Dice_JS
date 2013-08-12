@@ -128,13 +128,10 @@ div#rollAgainBtn.rolling:hover {
   	transition-timing-function: ease-out;
   	height:100%; 
   	width:100%; 
+	transform: translateZ(-100px);  	
 }
 
 /* Faces */
-
-#die .default {
-	transform: translateZ(100px); 
-}
 
 #front  { 
 	transform: rotateY(   0deg ) translateZ( 100px );
@@ -156,15 +153,12 @@ div#rollAgainBtn.rolling:hover {
 }
 
 
-#die.default { transform: translateZ(-100px); }
-
-
-#die.show-front  { transform: translateZ( -100px ) rotateY(    0deg ); }
-#die.show-back   { transform: translateZ( -100px ) rotateX( -180deg ); }
-#die.show-right  { transform: translateZ( -100px ) rotateY(  -90deg ); }
-#die.show-left   { transform: translateZ( -100px ) rotateY(   90deg ); }
-#die.show-top    { transform: translateZ( -100px ) rotateX(  -90deg ); }
-#die.show-bottom { transform: translateZ( -100px ) rotateX(   90deg ); }
+#die.spinToFront  { transform: translateZ( -100px ) rotateY(    0deg ); }
+#die.spinToBack   { transform: translateZ( -100px ) rotateX( -180deg ); }
+#die.spinToRight  { transform: translateZ( -100px ) rotateY(  -90deg ); }
+#die.spinToLeft   { transform: translateZ( -100px ) rotateY(   90deg ); }
+#die.spinToTop    { transform: translateZ( -100px ) rotateX(  -90deg ); }
+#die.spinToBottom { transform: translateZ( -100px ) rotateX(   90deg ); }
 
 #die.spin {
 	animation: spin 1.5s;
@@ -174,6 +168,80 @@ div#rollAgainBtn.rolling:hover {
 
 @keyframes spin {
     0% { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(-360deg) rotateZ(-360deg); }            
+}
+
+#die.spinFromFront {
+	animation: spinFromFront 1.5s;
+	animation-timing-function: ease-in; 
+	animation-iteration-count: 1;	
+
+}
+
+#die.spinFromBack {
+	animation: spinFromBack 1.5s;
+	animation-timing-function: ease-in; 
+	animation-iteration-count: 1;	
+
+}
+
+#die.spinFromRight {
+	animation: spinFromRight 1.5s;
+	animation-timing-function: ease-in; 
+	animation-iteration-count: 1;	
+}
+
+#die.spinFromLeft {
+	animation: spinFromLeft 1.5s;
+	animation-timing-function: ease-in; 
+	animation-iteration-count: 1;	
+}
+
+#die.spinFromTop {
+	animation: spinFromTop 1.5s;
+	animation-timing-function: ease-in; 
+	animation-iteration-count: 1;	
+}
+
+#die.spinFromBottom {
+	animation: spinFromBottom 1.5s;
+	animation-timing-function: ease-in; 
+	animation-iteration-count: 1;	
+}
+
+@keyframes spinFromFront {
+    0% { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(-360deg) rotateZ(-360deg); }            
+}
+
+@keyframes spinFromBack {
+    0% { transform: translateZ(-100px) rotateX(-180deg) rotateY(0deg) rotateZ(0deg); }
+
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(-360deg) rotateZ(-360deg); }            
+}
+
+@keyframes spinFromRight {
+    0% { transform: translateZ(-100px) rotateX(0deg) rotateY(-90deg) rotateZ(0deg); }
+
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(-360deg) rotateZ(-360deg); }            
+}
+
+@keyframes spinFromLeft {
+    0% { transform: translateZ(-100px) rotateX(0deg) rotateY(90deg) rotateZ(0deg); }
+
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(-360deg) rotateZ(-360deg); }            
+}
+
+@keyframes spinFromTop {
+    0% { transform: translateZ(-100px) rotateX(-90deg) rotateY(0deg) rotateZ(0deg); }
+
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(-360deg) rotateZ(-360deg); }            
+}
+
+@keyframes spinFromBottom {
+    0% { transform: translateZ(-100px) rotateX(90deg) rotateY(0deg) rotateZ(0deg); }
 
     100% { transform: translateZ(-100px) rotateX(360deg) rotateY(-360deg) rotateZ(-360deg); }            
 }

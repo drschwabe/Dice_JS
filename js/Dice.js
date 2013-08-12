@@ -36,10 +36,64 @@ $(document).ready(function() {
 	}
 
 
-	//############# AI ################
+	//############# AI ################	
 
-	defaultClass = 'show-front'; 
+	var spinFromClass = 'spinFromFront'; 
+	var spinToClass = 'spintToFront'; 
 
+	function determineDieClass(result, status) {
+
+		if(status == 'spinTo') { 
+			switch(result) {
+
+				case 1: 
+					return 'spinToTop';
+					break;
+				case 2: 
+					return 'spinToFront' ;
+					break;
+				case 3: 
+					return 'spinToRight' ;
+					break;
+				case 4: 
+					return 'spinToLeft' ;
+					break;
+				case 5: 
+					return 'spinToBack' ;
+					break;
+				case 6: 
+					return 'spinToBottom' ;
+					break;					
+			}
+		}
+
+		if(status == 'spinFrom') {
+			switch(result) {
+
+				case 1: 
+					return 'spinFromTop';
+					break;
+				case 2: 
+					return 'spinFromFront' ;
+					break;
+				case 3: 
+					return 'spinFromRight' ;
+					break;
+				case 4: 
+					return 'spinFromLeft' ;
+					break;
+				case 5: 
+					return 'spinFromBack' ;
+					break;
+				case 6: 
+					return 'spinFromBottom' ;
+					break; 
+			}
+		}
+	}	
+
+
+	//Primary function: 
 	function Ai(command) {
 
 		if (command == 'Start') {
@@ -48,52 +102,47 @@ $(document).ready(function() {
 
 		if (command == 'Roll') {
 
+
+
 			//Perform the dice roll computation: 
-			var rollResult = Math.ceil(Math.random() * 6 - 1) + 1;
+			rollResult = Math.ceil(Math.random() * 6 - 1) + 1;
 			console.log(rollResult); 
 
-			//Reset animation classes if any were added previously: 
-			die.removeClass(); 
-			die.addClass(defaultClass); 	
 
-			//Determine the final class based on the rollResult: 
+		
 
-			switch(rollResult) {
-				case 1: 
-					rollResultClass = 'show-top' ; 
-					break;
-				case 2: 
-					rollResultClass = 'show-front' ; 
-					break;
-				case 3: 
-					rollResultClass = 'show-right' ; 
-					break;
-				case 4: 
-					rollResultClass = 'show-left' ; 
-					break;
-				case 5: 
-					rollResultClass = 'show-back' ; 
-					break;
-				case 6: 
-					rollResultClass = 'show-bottom' ; 
-					break;
-				}
+			//Display rolling screen: 
+			Display('Rolling'); 			
 
+			
 			//In one second, initiate the spin animation...
 			setTimeout(function () {
-				die.addClass('spin'); 
+				die.addClass(spinFromClass); 
 				}, 1000); 
 
 	
 			//And add the final class: 
 			setTimeout(function() {
-				die.addClass(rollResultClass); 
-			}, 2500);  				
+
+				//Determine the final class based on the rollResult..
+				spinToClass = determineDieClass(rollResult, 'spinTo'); 
+
+				//Delete the previously set class and set the new one: 				
+				die.attr('class', spinToClass); 
+
+			}, 2500);  
 
 
-			//Display rolling screen: 
-			Display('Rolling'); 			
-		}
+			setTimeout(function() {
+				die.removeClass('spin'); 
+				//Based on the result, determine a class we start from for the next roll (this ensures animation starts from the last completed roll): 
+				spinFromClass = determineDieClass(rollResult, 'spinFrom'); 	
+
+			}, 3000); 
+
+
+
+		}	
 	}
 
 
