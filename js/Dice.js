@@ -1,13 +1,21 @@
 $(document).ready(function() {
 
-	console.log('hello world'); 
-
-
 	//############# DISPLAY ################
 	
 	//Define UI elements: 
 	var die = $('#die'); 
 
+
+	function updateRollButton() {
+		var rollAgainBtn = $('#rollAgainBtn'); 
+		if(rolling == true ) { 
+			rollAgainBtn.addClass('rolling'); 
+			rollAgainBtn.html('ROLLING');		
+		} else {
+			rollAgainBtn.html('ROLL again');					
+			rollAgainBtn.removeClass('rolling'); 	
+		}
+	}
 
 	//main function:
 	function Display(screen) {
@@ -29,7 +37,8 @@ $(document).ready(function() {
 		if (screen == 'Rolling') {
 			$('#startScreen').hide(); 
 			$('#dieScreen').show();
-			$('#gameplayUI').show();	
+			$('#gameplayUI').show();
+			updateRollButton(); 			
 		}
 	}
 
@@ -40,6 +49,7 @@ $(document).ready(function() {
 	var delayTime;  
 	var spinFromClass = 'spinFromFront'; 
 	var spinToClass = 'spintToFront'; 
+	var rolling = false; 
 
 	function determineDieClass(result, status) {
 
@@ -101,8 +111,9 @@ $(document).ready(function() {
 			Display('Starting');
 		}
 
-		if (command == 'Roll') {
+		if (command == 'Roll' && rolling == false) {
 
+			rolling = true; 
 
 			//Perform the dice roll computation: 
 			rollResult = Math.ceil(Math.random() * 6 - 1) + 1;
@@ -139,9 +150,14 @@ $(document).ready(function() {
 				//Update the delay time to reduce it for subsequent rolls: 
 				delayTime = 0; 
 
+	
+				//Conclude by updating rolling status.., 
+				rolling = false; 
+				//and have display update the Roll Again button content: 
+				updateRollButton(); 
+
+
 			}, delayTime + 2000); 
-
-
 
 		}	
 	}
@@ -151,7 +167,8 @@ $(document).ready(function() {
 
 	/* Main menu: */
 	$('#rollBtn, #rollAgainBtn').click(function() {
-		Ai('Roll')
+
+		Ai('Roll'); 
 	}); 
 
 	/* Gameplay: */
