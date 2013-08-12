@@ -26,11 +26,17 @@ $(document).ready(function() {
 		if (screen == 'Starting') {
 
 			//Hide previous screens if existing: 
-			$('.screen').hide(); 			
+			$('.screen').hide(); 		
 
 			//Welcome user: 
-			console.log("Welcome to DICE.  Are you ready to roll?\n(R)oll (E)xit");			
+			console.log("Welcome to DICE.");			
 			$('#startScreen').show(); 
+
+
+			//Animate UI elements: 
+			$("#rollBtn ").addClass("animated bounceInUp"); 
+			$("#logo").addClass('animated bounceIn'); 
+
 
 		}
 
