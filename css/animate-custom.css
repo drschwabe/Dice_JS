@@ -80,8 +80,10 @@
 	-webkit-animation-name: bounceIn;
 	-moz-animation-name: bounceIn;
 	-o-animation-name: bounceIn;
+	-webkit-animation-name: bounceIn;
+	-webkit-animation-delay: 0.5s;	
 	animation-name: bounceIn;
-	animation-delay: 1.2s;
+	animation-delay: 0.5s;
 }
 @-webkit-keyframes bounceInUp {
 	0% {
@@ -166,6 +168,8 @@
 	-webkit-animation-name: bounceInUp;
 	-moz-animation-name: bounceInUp;
 	-o-animation-name: bounceInUp;
+	-webkit-animation-name: bounceInUp;
+	-webkit-animation-delay: 1.5s;		
 	animation-name: bounceInUp;
-	animation-delay: 0.5s;	
+	animation-delay: 1.5s;	
 }

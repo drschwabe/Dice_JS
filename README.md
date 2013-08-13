@@ -1,6 +1,3 @@
-
-
-
 ### Premise ###
 This is a practice <del>Ruby Haxe Haxe + OpenFL </del>JavaScript / CSS3 project.  To simulate... DICE. 
 What can a die do?  Well. It can roll. 
@@ -27,7 +24,16 @@ Organizing & separating code into these three paradigms, then enforcing consiste
 ### Links & reference ###
 
 For the homescreen UI animations:<br />
-[http://daneden.me/animate/ ](http://daneden.me/animate/)
+[daneden.me/animate/ ](http://daneden.me/animate/)
 
-And for an excellent primer on 3D CSS: <br />
-[http://desandro.github.io/3dtransforms/](http://desandro.github.io/3dtransforms/)
+For an excellent primer on 3D CSS: <br />
+[desandro.github.io/3dtransforms/](http://desandro.github.io/3dtransforms/)
+
+Handy way to auto-prefix CSS: <br />
+[github.com/ai/autoprefixer/](http://desandro.github.io/3dtransforms/)
+
+
+<br />
+
+### Compatibility ###
+Works in Firefox, Chrome/Safari
